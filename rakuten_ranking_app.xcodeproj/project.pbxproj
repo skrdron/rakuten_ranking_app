@@ -99,9 +99,11 @@
 		6D6781B82BEA268000423201 /* rakuten_ranking_app */ = {
 			isa = PBXGroup;
 			children = (
+				6D6781EC2BEA2D0300423201 /* Controllers */,
+				6D6781EA2BEA2CAD00423201 /* Models */,
+				6D6781E92BEA2C9E00423201 /* Views */,
 				6D6781B92BEA268000423201 /* AppDelegate.swift */,
 				6D6781BB2BEA268000423201 /* SceneDelegate.swift */,
-				6D6781BD2BEA268000423201 /* ViewController.swift */,
 				6D6781BF2BEA268000423201 /* Main.storyboard */,
 				6D6781C22BEA268000423201 /* Assets.xcassets */,
 				6D6781C42BEA268000423201 /* LaunchScreen.storyboard */,
@@ -125,6 +127,28 @@
 				6D6781DC2BEA268000423201 /* rakuten_ranking_appUITestsLaunchTests.swift */,
 			);
 			path = rakuten_ranking_appUITests;
+			sourceTree = "<group>";
+		};
+		6D6781E92BEA2C9E00423201 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6D6781BD2BEA268000423201 /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6D6781EA2BEA2CAD00423201 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6D6781EC2BEA2D0300423201 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
