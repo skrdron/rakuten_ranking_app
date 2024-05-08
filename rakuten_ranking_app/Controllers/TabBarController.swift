@@ -17,28 +17,28 @@ class TabBarController: UITabBarController {
     }
     
     private func configureTabs(){
-        let vc1 = RankingView()
-        let vc2 = SearchView()
-        let vc3 = BookmarkView()
+        let rankingView = RankingView()
+        let searchView = SearchView()
+        let bookmarkView = BookmarkView()
         
         //タブイメージの設定
-        vc1.tabBarItem.image = UIImage(systemName: "chart.line.uptrend.xyaxis")
-        vc2.tabBarItem.image = UIImage(systemName: "magnifyingglass")
-        vc3.tabBarItem.image = UIImage(systemName: "bookmark")
+        rankingView.tabBarItem.image = UIImage(systemName: "chart.line.uptrend.xyaxis")
+        searchView.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        bookmarkView.tabBarItem.image = UIImage(systemName: "bookmark")
         
         //タブタイトルの設定
-        vc1.title = "ランキング"
-        vc2.tabBarItem.title = "検索"
-        vc3.title = "ブックマーク"
+        rankingView.title = "ランキング"
+        searchView.tabBarItem.title = "検索"
+        bookmarkView.title = "ブックマーク"
         
-        let nav1 = UINavigationController(rootViewController: vc1)
-        let nav2 = UINavigationController(rootViewController: vc2)
-        let nav3 = UINavigationController(rootViewController: vc3)
+        let navToRanking = UINavigationController(rootViewController: rankingView)
+        let navToSearch = UINavigationController(rootViewController: searchView)
+        let navToBookmark = UINavigationController(rootViewController: bookmarkView)
         
         tabBar.tintColor = .label
         tabBar.backgroundColor = .systemGray6
         
-        setViewControllers([nav1,nav2,nav3], animated: true)
+        setViewControllers([navToRanking,navToSearch,navToBookmark], animated: true)
     }
     
 }
