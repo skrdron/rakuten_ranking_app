@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RankingForFemaleView: UIViewController {
+class RankingForFemaleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

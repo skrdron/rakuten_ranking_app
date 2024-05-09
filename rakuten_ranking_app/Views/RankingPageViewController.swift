@@ -22,9 +22,9 @@ class RankingPageViewController: UIPageViewController {
     func initPageView(){
         // PageViewControllerで表示するViewControllerをインスタンス化（オプショナルバインディング）
         guard
-            let rankingAllVC = storyboard?.instantiateViewController(withIdentifier: "rankingAll") as? RankingForAllView,
-            let rankingMaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingMale") as? RankingForMaleView,
-            let rankingFemaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingFemale") as? RankingForFemaleView 
+            let rankingAllVC = storyboard?.instantiateViewController(withIdentifier: "rankingAll") as? RankingForAllViewController,
+            let rankingMaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingMale") as? RankingForMaleViewController,
+            let rankingFemaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingFemale") as? RankingForFemaleViewController 
         else {
             print("エラー:storyboardからViewControllerの取得に失敗")
             return

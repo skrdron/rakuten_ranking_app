@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View-->
+        <!--Search View Controller-->
         <scene sceneID="2Xs-Uo-bpO">
             <objects>
-                <viewController storyboardIdentifier="searchView" id="DWA-s3-zir" customClass="SearchView" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchView" id="DWA-s3-zir" customClass="SearchViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JT6-0Q-quW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="10220.6106870229" y="261.97183098591552"/>
         </scene>
-        <!--Ranking View-->
+        <!--Ranking View Controller-->
         <scene sceneID="rGD-kU-pVp">
             <objects>
-                <viewController storyboardIdentifier="rankingView" id="cd5-9w-6WZ" customClass="RankingView" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rankingView" id="cd5-9w-6WZ" customClass="RankingViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GmB-7v-TA9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="5572" y="262"/>
         </scene>
-        <!--Bookmark View-->
+        <!--Bookmark View Controller-->
         <scene sceneID="g2h-DK-mnm">
             <objects>
-                <viewController storyboardIdentifier="bookmarkView" id="XVN-YK-zZY" customClass="BookmarkView" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bookmarkView" id="XVN-YK-zZY" customClass="BookmarkViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uB5-RV-kOw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,43 +141,62 @@
             </objects>
             <point key="canvasLocation" x="6657" y="1539"/>
         </scene>
-        <!--View Controller-->
+        <!--Ranking View Controller-->
         <scene sceneID="kgy-OM-UEO">
             <objects>
-                <viewController id="w0x-1f-RCE" sceneMemberID="viewController">
+                <viewController id="w0x-1f-RCE" customClass="RankingViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="822-mH-HRd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="636"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ljd-Ez-giX">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ljd-Ez-giX">
+                                <rect key="frame" x="0.0" y="-1" width="393" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                     <segment title=""/>
                                 </segments>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1Q-Gm-ez6">
+                                <rect key="frame" x="0.0" y="38" width="393" height="598"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="JGq-LD-Bvp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="l1Q-Gm-ez6" firstAttribute="leading" secondItem="JGq-LD-Bvp" secondAttribute="leading" id="1el-8B-Z7a"/>
+                            <constraint firstItem="l1Q-Gm-ez6" firstAttribute="top" secondItem="822-mH-HRd" secondAttribute="top" constant="38" id="CHs-dM-G93"/>
+                            <constraint firstItem="l1Q-Gm-ez6" firstAttribute="top" secondItem="Ljd-Ez-giX" secondAttribute="bottom" constant="8" symbolic="YES" id="G5a-zX-eaG"/>
+                            <constraint firstItem="l1Q-Gm-ez6" firstAttribute="leading" secondItem="Ljd-Ez-giX" secondAttribute="leading" id="ICA-oK-nI0"/>
+                            <constraint firstItem="l1Q-Gm-ez6" firstAttribute="trailing" secondItem="Ljd-Ez-giX" secondAttribute="trailing" id="POh-vR-H4K"/>
+                            <constraint firstAttribute="bottom" secondItem="l1Q-Gm-ez6" secondAttribute="bottom" id="UXz-Ph-2U1"/>
+                            <constraint firstItem="l1Q-Gm-ez6" firstAttribute="width" secondItem="822-mH-HRd" secondAttribute="width" id="Xlo-lM-WK3"/>
+                            <constraint firstItem="l1Q-Gm-ez6" firstAttribute="trailing" secondItem="JGq-LD-Bvp" secondAttribute="trailing" id="vhj-Sv-76B"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="switchedView" destination="l1Q-Gm-ez6" id="gxm-5g-Ayo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WH4-gY-0NJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9555" y="-2190"/>
+            <point key="canvasLocation" x="9554.961832061068" y="-2190.1408450704225"/>
         </scene>
         <!--Ranking Page View Controller-->
         <scene sceneID="nfa-NF-NtZ">
             <objects>
-                <pageViewController storyboardIdentifier="rankingPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Tgi-vi-HXj" customClass="RankingPageViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="rankingPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Tgi-vi-HXj" customClass="RankingPageViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3aq-j1-Bi2"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TBQ-Mt-hgu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10355" y="-2206"/>
+            <point key="canvasLocation" x="10489" y="-2190"/>
         </scene>
-        <!--Ranking For All View-->
+        <!--Ranking For All View Controller-->
         <scene sceneID="3Lv-eP-PXc">
             <objects>
-                <viewController storyboardIdentifier="rankingAll" id="cBa-eE-1zI" customClass="RankingForAllView" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rankingAll" id="cBa-eE-1zI" customClass="RankingForAllViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I8J-C8-gba">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="11288" y="-2204"/>
         </scene>
-        <!--Ranking For Male View-->
+        <!--Ranking For Male View Controller-->
         <scene sceneID="3wq-9X-YfO">
             <objects>
-                <viewController storyboardIdentifier="rankingMale" id="TeE-b0-f9r" customClass="RankingForMaleView" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rankingMale" id="TeE-b0-f9r" customClass="RankingForMaleViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tl2-Yc-BjL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="12262" y="-2208"/>
         </scene>
-        <!--Ranking For Female View-->
+        <!--Ranking For Female View Controller-->
         <scene sceneID="V8z-UJ-AhO">
             <objects>
-                <viewController storyboardIdentifier="rankingFemale" id="8AZ-bc-K2a" customClass="RankingForFemaleView" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rankingFemale" id="8AZ-bc-K2a" customClass="RankingForFemaleViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sX-Yx-frr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
