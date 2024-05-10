@@ -9,33 +9,28 @@ import UIKit
 
 class RankingPageViewController: UIPageViewController {
     
-    // ① PageView上で表示するViewControllerを管理する配列
     private var controllers: [UIViewController] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // ②初期化
         self.initPageView()
     }
     
-    // ②初期化（PageViewで表示するViewをセット）
     func initPageView(){
-        // PageViewControllerで表示するViewControllerをインスタンス化（オプショナルバインディング）
+
         guard
-            let rankingAllVC = storyboard?.instantiateViewController(withIdentifier: "rankingAll") as? RankingForAllViewController,
-            let rankingMaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingMale") as? RankingForMaleViewController,
-            let rankingFemaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingFemale") as? RankingForFemaleViewController 
+            let rankingForAllVC = storyboard?.instantiateViewController(withIdentifier: "rankingAll") as? RankingForAllViewController,
+            let rankingForMaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingMale") as? RankingForMaleViewController,
+            let rankingForFemaleVC = storyboard?.instantiateViewController(withIdentifier: "rankingFemale") as? RankingForFemaleViewController
         else {
             print("エラー:storyboardからViewControllerの取得に失敗")
             return
         }
-        // インスタンス化したViewControllerを配列に追加
-        self.controllers = [rankingAllVC, rankingMaleVC, rankingFemaleVC]
+
+        self.controllers = [rankingForAllVC, rankingForMaleVC, rankingForFemaleVC]
             
         if !controllers.isEmpty {
-            // 最初に表示するViewControllerを指定する
             setViewControllers([controllers[0]], direction: .forward, animated: true, completion: nil)
-            // PageViewControllerのDataSourceとの関連付け
             self.dataSource = self
         }
     }
@@ -43,12 +38,10 @@ class RankingPageViewController: UIPageViewController {
 
 
 extension RankingPageViewController: UIPageViewControllerDataSource {
-    // スクロールするページ数
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return self.controllers.count
     }
 
-    // 左にスワイプした時の処理
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let index = self.controllers.firstIndex(of: viewController),
             index < self.controllers.count - 1 {
@@ -58,7 +51,6 @@ extension RankingPageViewController: UIPageViewControllerDataSource {
         }
     }
     
-    // 右にスワイプした時の処理
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let index = self.controllers.firstIndex(of: viewController),
             index > 0 {
@@ -66,5 +58,14 @@ extension RankingPageViewController: UIPageViewControllerDataSource {
         } else {
             return nil
         }
+    }
+    
+    //RankingViewControllerから呼び出される → 表示されているビューコントローラーを切り替える
+    func switchToViewController(at index: Int) {
+       //配列の範囲外へのアクセスを防ぐ
+       if index >= 0 && index < controllers.count {
+         //表示するビューコントローラーを設定:選択されたインデックスのVCを抽出し、そのVCを現在表示するように設定
+         setViewControllers([controllers[index]], direction: .forward, animated: false, completion: nil)
+       }
     }
 }

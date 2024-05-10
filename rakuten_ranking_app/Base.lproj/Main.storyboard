@@ -176,6 +176,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="segmentedControl" destination="Ljd-Ez-giX" id="FNh-Tg-bLQ"/>
                         <outlet property="switchedView" destination="l1Q-Gm-ez6" id="gxm-5g-Ayo"/>
                     </connections>
                 </viewController>
