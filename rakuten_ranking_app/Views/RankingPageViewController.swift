@@ -14,7 +14,8 @@ protocol RankingPageViewControllerDelegate: AnyObject {
 }
 
 class RankingPageViewController: UIPageViewController,UIPageViewControllerDelegate {
-    weak var customDelegate: RankingPageViewControllerDelegate?
+    weak var updateTabNotificationDelegate: RankingPageViewControllerDelegate?
+    //↑RankingPageViewControllerがページ遷移を完了した時にセグメントの状態を更新するためにRankingViewControllerに通知を送る役割をしている
             
     private var controllers: [UIViewController] = []
 
@@ -46,7 +47,7 @@ class RankingPageViewController: UIPageViewController,UIPageViewControllerDelega
     //ページ遷移が完了したらデリゲートメソッド
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
             if completed, let visibleViewController = viewControllers?.first, let index = controllers.firstIndex(of: visibleViewController) {
-                customDelegate?.changeTabByViewController(at: index)
+                updateTabNotificationDelegate?.changeTabByViewController(at: index)
             }
         }
 }

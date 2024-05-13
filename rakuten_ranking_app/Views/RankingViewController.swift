@@ -37,31 +37,33 @@ class RankingViewController: UIViewController, UIPageViewControllerDelegate, Ran
         
         addChild(rankingPageViewController)
         //switchedViewに追加
-        if let switchedView = switchedView {
-            switchedView.addSubview(rankingPageViewController.view)
-            rankingPageViewController.view.frame = switchedView.bounds
-            rankingPageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            rankingPageViewController.didMove(toParent: self)
-            self.rankingPageViewController = rankingPageViewController
-            //デリゲート
-            rankingPageViewController.customDelegate = self
-        } else {
+        guard let switchedView = switchedView else {
             print("switchedViewがStoryboardで正しく接続されていません。")
+            return
         }
+                
+        switchedView.addSubview(rankingPageViewController.view)
+        rankingPageViewController.view.frame = switchedView.bounds
+        rankingPageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        rankingPageViewController.didMove(toParent: self)
+        self.rankingPageViewController = rankingPageViewController
+        //デリゲート
+        rankingPageViewController.updateTabNotificationDelegate = self
     }
     //セグメントコントロールを設定
     private func setupSegmentedControl() {
-        if let segmentedControl = segmentedControl {
-            segmentedControl.removeAllSegments()
-            segmentedControl.insertSegment(withTitle: "総合", at: 0, animated: false)
-            segmentedControl.insertSegment(withTitle: "男性", at: 1, animated: false)
-            segmentedControl.insertSegment(withTitle: "女性", at: 2, animated: false)
-            segmentedControl.selectedSegmentIndex = 0
-            segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
-        } else {
-            print("segmentedControlがStoryboardで正しく接続されていません。")
-        }
-    }
+         guard let segmentedControl = segmentedControl else {
+             print("segmentedControlがStoryboardで正しく接続されていません。")
+             return
+         }
+         
+         segmentedControl.removeAllSegments()
+         segmentedControl.insertSegment(withTitle: "総合", at: 0, animated: false)
+         segmentedControl.insertSegment(withTitle: "男性", at: 1, animated: false)
+         segmentedControl.insertSegment(withTitle: "女性", at: 2, animated: false)
+         segmentedControl.selectedSegmentIndex = 0
+         segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+     }
     
     //タップされたときに呼び出されるアクション
     @objc private func segmentChanged(_ sender: UISegmentedControl) {
