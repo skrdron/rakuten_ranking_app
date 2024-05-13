@@ -7,23 +7,31 @@
 
 import UIKit
 
+
 class RankingForAllViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchRankingData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func fetchRankingData() {
+        let url: URL = URL(string: "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20220601?applicationId=1054850339030324271")!
+        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+          // コンソールに出力
+          print("data: \(String(describing: data))")
+          print("response: \(String(describing: response))")
+          print("error: \(String(describing: error))")
+          do{
+            //JSONに変換&バースする
+            let rankingData = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String: Any]
+              print(rankingData) // Jsonの中身を表示
+            }
+            catch {
+             print(error)
+            }
+          }
+        )
+        task.resume()
     }
-    */
-
 }
