@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import Models
 
-
-class RankingForAllViewController: UIViewController {
+final class RankingForAllViewController: UIViewController {
     
     var model: RankingModel! {
       didSet {
@@ -32,7 +32,11 @@ class RankingForAllViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        printData(ranking: model.ranking)
+        guard let ranking = model?.ranking else {
+              print("Error: model or model.ranking is nil")
+              return
+          }
+        printData(ranking: ranking)
     }
     
     private func printData(ranking: Ranking) {
