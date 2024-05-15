@@ -16,8 +16,8 @@ public class RankingAPI{
     }
     
     
-    func requestRanking(itemCode: String, completion: @escaping (Result<Ranking, APIError>) -> Void){
-        apiClient.request(RankingAPIRequest.getRanking(itemCode: itemCode)) { result in
+    func requestRanking(sex: String, completion: @escaping (Result<Ranking, APIError>) -> Void){
+        apiClient.request(RankingAPIRequest.getRanking(sex: sex)) { result in
             switch result {
             case .success(let data):
                 if let result = try? JSONDecoder().decode(Ranking.self, from: data) {
@@ -56,11 +56,15 @@ public extension RankingRequest {
 }
 
 public enum RankingAPIRequest: RankingRequest {
-    case getRanking(itemCode: String)
+    case getRanking(sex: String)
     public var parameter: [String: Any] {
         switch self {
-        case .getRanking(let itemCode):
-            return ["itemCode": itemCode]
+        case .getRanking(let sex):
+            if sex.isEmpty {
+                return [:]
+            } else {
+                return ["sex": sex]
+            }
         }
     }
 }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Models
 
 final class RankingForAllViewController: UIViewController {
     
@@ -17,7 +16,7 @@ final class RankingForAllViewController: UIViewController {
     }
     
     deinit {
-           model.notificationCenter.removeObserver(self)
+      model.notificationCenter.removeObserver(self)
     }
 
     private func registerModel() {
@@ -32,11 +31,9 @@ final class RankingForAllViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let ranking = model?.ranking else {
-              print("Error: model or model.ranking is nil")
-              return
-          }
-        printData(ranking: ranking)
+        
+        model = RankingModel(sex:1, apiClient: DefaultAPIClient.shared)
+        model.requestRanking()
     }
     
     private func printData(ranking: Ranking) {

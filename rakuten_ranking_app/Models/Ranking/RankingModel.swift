@@ -17,21 +17,52 @@ final class RankingModel {
         }
     }
     private let rankingAPI: RankingAPI
-    private let itemCode: String
-
-    public init(itemCode: String, apiClient: APIClient) {
-        self.itemCode = itemCode
-        self.rankingAPI = .init(apiClient: apiClient)
-    }
-
-    public func requestRanking(_ completion: @escaping (Result<Ranking, APIError>) -> Void) {
-        rankingAPI.requestRanking(itemCode: itemCode) { [weak self] result in
-            DispatchQueue.main.async {
-                if case .success(let ranking) = result {
-                    self?.ranking = ranking
+    
+    enum SexType: Int {
+            case all = 0
+            case male = 1
+            case female = 2
+            
+            init(value: Int?) {
+                switch value {
+                case 1:
+                    self = .male
+                case 2:
+                    self = .female
+                default:
+                    self = .all
                 }
-                completion(result)
+            }
+            
+            var description: String {
+                switch self {
+                case .all:
+                    return "総合ランキング"
+                case .male:
+                    return "男性ランキング"
+                case .female:
+                    return "女性ランキング"
+                }
             }
         }
-    }
+
+    let sex: SexType
+    
+    public init(sex: Int? = nil, apiClient: APIClient) {
+           self.rankingAPI = .init(apiClient: apiClient)
+           self.sex = SexType(value: sex)
+           print("現在取得しているランキング: \(self.sex.description)")
+       }
+
+    
+       public func requestRanking() {
+           let sexValue = sex.rawValue == 0 ? "" : "\(sex.rawValue)"
+           rankingAPI.requestRanking(sex:sexValue) { [weak self] result in
+               DispatchQueue.main.async {
+                   if case .success(let ranking) = result {
+                       self?.ranking = ranking
+                   }
+               }
+           }
+       }
 }
