@@ -7,12 +7,10 @@
 
 import UIKit
 
-class BookmarkView: UIViewController {
+class BookmarkViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
      
     }
-    
 }
