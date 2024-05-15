@@ -32,7 +32,7 @@ final class RankingForAllViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        model = RankingModel(sex:1, apiClient: DefaultAPIClient.shared)
+        model = RankingModel(apiClient: DefaultAPIClient.shared)
         model.requestRanking()
     }
     

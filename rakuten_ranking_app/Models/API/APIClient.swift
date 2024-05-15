@@ -8,7 +8,8 @@
 import Foundation
 import Alamofire
 
-public enum APIError: Error {
+
+enum APIError: Error {
     case network
     case server
     case invalidJSON
@@ -32,8 +33,8 @@ public enum HTTPMethod: String {
     case get
 }
 
+//ここで直接getなどを指定するのは良くない→別の場所で持たせる/APIClientクラスかDefaultAPIClientクラスでapplicationId入れられると良い
 public protocol Request {
-    var baseURL: URL { get }
     var method: HTTPMethod { get }
     var path: String { get }
     var headerFields: [String: String] { get }
@@ -63,6 +64,11 @@ public extension Request {
     }
 
     func makeRequest() -> URLRequest {
+        let baseURL = const.baseURL
+        // URL型に変換
+        guard let baseURL = URL(string: baseURL) else {
+            fatalError("無効なbaseURL")
+        }
         let url = path.isEmpty ? baseURL : baseURL.appendingPathComponent(path)
         var urlRequest = URLRequest(url: url, timeoutInterval: timeout)
         urlRequest.httpMethod = method.rawValue
@@ -82,11 +88,11 @@ public extension Request {
     }
 }
 
-public protocol APIClient {
+protocol APIClient {
     func request(_ request: Request, completion: @escaping (Result<Data, APIError>) -> Void)
 }
 
-public final class DefaultAPIClient: APIClient {
+final class DefaultAPIClient: APIClient {
     public static let shared = DefaultAPIClient()
 
     private init() {}

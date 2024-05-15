@@ -7,11 +7,12 @@
 
 import Foundation
 
+
 public class RankingAPI{
     private let apiClient: APIClient
 
     
-    public init(apiClient: APIClient) {
+    init(apiClient: APIClient) {
       self.apiClient = apiClient
     }
     
@@ -32,26 +33,21 @@ public class RankingAPI{
     }
 }
 
-public protocol RankingRequest: Request {
-}
+public protocol RankingRequest: Request {}
 
 public extension RankingRequest {
-    var baseURL: URL {
-        #if DEBUG
-          // デバッグ（必要であればここでURLを開発用途化に変える）*別モジュールなのでDUMMYは使えない
-          return URL(string: "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20220601?applicationId=1054850339030324271")!
-        #else
-          // 本番
-          return URL(string: "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20220601?applicationId=1054850339030324271")!
-        #endif
-    }
-
+    /*
+      APIのURLを作成するときにbaseURLをAPICommonURLから引っ張ってくる
+      それ以降のURLを let　xxx = "IchibaItem/Ranking/20220601?applicationId=1054850339030324271"として定義し、使う時に
+      fetchUrl = baseURL + xxxの様にして作成したい
+      URL()の括弧内に上記のurlを代入？
+    */
     var method: HTTPMethod {
         return .get
     }
-
+    
     var path: String {
-        return ""
+        return const.urlPath
     }
 }
 
