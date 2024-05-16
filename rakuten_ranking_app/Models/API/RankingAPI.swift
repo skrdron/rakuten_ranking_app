@@ -36,12 +36,6 @@ public class RankingAPI{
 public protocol RankingRequest: Request {}
 
 public extension RankingRequest {
-    /*
-      APIのURLを作成するときにbaseURLをAPICommonURLから引っ張ってくる
-      それ以降のURLを let　xxx = "IchibaItem/Ranking/20220601?applicationId=1054850339030324271"として定義し、使う時に
-      fetchUrl = baseURL + xxxの様にして作成したい
-      URL()の括弧内に上記のurlを代入？
-    */
     var method: HTTPMethod {
         return .get
     }

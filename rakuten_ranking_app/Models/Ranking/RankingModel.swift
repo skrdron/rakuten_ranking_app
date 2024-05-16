@@ -53,7 +53,6 @@ final class RankingModel {
            self.sex = SexType(value: sex)
            print("現在取得しているランキング: \(self.sex.description)")
        }
-
     
        public func requestRanking() {
            let sexValue = sex.rawValue == 0 ? "" : "\(sex.rawValue)"

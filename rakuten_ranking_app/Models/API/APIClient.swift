@@ -33,12 +33,10 @@ public enum HTTPMethod: String {
     case get
 }
 
-//ここで直接getなどを指定するのは良くない→別の場所で持たせる/APIClientクラスかDefaultAPIClientクラスでapplicationId入れられると良い
 public protocol Request {
     var method: HTTPMethod { get }
     var path: String { get }
     var headerFields: [String: String] { get }
-    var parameter: [String: Any] { get }
     var timeout: TimeInterval { get }
     var contentType: String { get }
     var accept: String { get }
@@ -65,18 +63,20 @@ public extension Request {
 
     func makeRequest() -> URLRequest {
         let baseURL = const.baseURL
-        // URL型に変換
         guard let baseURL = URL(string: baseURL) else {
             fatalError("無効なbaseURL")
         }
         let url = path.isEmpty ? baseURL : baseURL.appendingPathComponent(path)
         var urlRequest = URLRequest(url: url, timeoutInterval: timeout)
         urlRequest.httpMethod = method.rawValue
-        if !parameter.isEmpty {
-            if let request = try? URLEncoding.default.encode(urlRequest, with: parameter) {
-                urlRequest = request
+        
+        let parameter: Parameters? = ["applicationId": const.applicationId]
+            if let parameter = parameter, !parameter.isEmpty {
+                if let request = try? URLEncoding.default.encode(urlRequest, with: parameter) {
+                     urlRequest = request
             }
         }
+        
         headerFields.forEach { key, value in
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
