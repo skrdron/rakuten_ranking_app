@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RankingForAllViewController: UIViewController {
+class RankingForAllViewController: UIViewController {
     
     var model: RankingModel! {
       didSet {
@@ -21,10 +21,10 @@ final class RankingForAllViewController: UIViewController {
 
     private func registerModel() {
       _ = model.notificationCenter
-               .addObserver(forName: .init(rawValue: "ranking"),
-                            object: nil, queue: nil) { [weak self] notification in
-                               if let ranking = notification.userInfo?["ranking"] as? Ranking {
-                                   self?.printData(ranking: ranking)
+            .addObserver(forName: .init(rawValue: Const.notificationName),
+                            object: nil, queue: nil) { notification in
+                               if let ranking = notification.userInfo?[Const.notificationName] as? Ranking {
+                                   ranking.printData()
                                }
       }
     }
@@ -34,12 +34,5 @@ final class RankingForAllViewController: UIViewController {
         
         model = RankingModel(apiClient: DefaultAPIClient.shared)
         model.requestRanking()
-    }
-    
-    private func printData(ranking: Ranking) {
-        for itemElement in ranking.items {
-            let item = itemElement.item
-            print("商品名: \(item.itemName)")
-        }
     }
 }

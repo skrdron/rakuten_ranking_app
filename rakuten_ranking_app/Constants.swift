@@ -7,12 +7,11 @@
 
 import Foundation
 
-//ここで固定値を定義し渡す
-struct const {
+struct Const {
     static let baseURL = "https://app.rakuten.co.jp/services/api/"
     static let applicationId = "1054850339030324271"
-    //APIリクエストURLで?applicationId が2回出現している　↓修正
-    static let urlPath = "IchibaItem/Ranking/20220601"
+    static let rankingAPIUrlPath = "IchibaItem/Ranking/20220601"
+    static let notificationName = "ranking"
 }
 
 

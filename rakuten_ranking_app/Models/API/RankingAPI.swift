@@ -8,7 +8,7 @@
 import Foundation
 
 
-public class RankingAPI{
+class RankingAPI{
     private let apiClient: APIClient
 
     init(apiClient: APIClient) {
@@ -32,19 +32,19 @@ public class RankingAPI{
     }
 }
 
-public protocol RankingRequest: Request {}
+protocol RankingRequest: Request {}
 
-public extension RankingRequest {
+extension RankingRequest {
     var method: HTTPMethod {
         return .get
     }
     
     var path: String {
-        return const.urlPath
+        return Const.rankingAPIUrlPath
     }
 }
 
-public enum RankingAPIRequest: RankingRequest {
+enum RankingAPIRequest: RankingRequest {
     case getRanking(sex: String)
 
     public var parameters: [String: Any] {

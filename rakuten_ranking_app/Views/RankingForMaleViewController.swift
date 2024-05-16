@@ -20,7 +20,7 @@ class RankingForMaleViewController: UIViewController {
     
     private func registerModel() {
       _ = model.notificationCenter
-               .addObserver(forName: .init(rawValue: "ranking"),
+            .addObserver(forName: .init(rawValue: Const.notificationName),
                             object: nil, queue: nil) { [weak self] notification in
                                if let ranking = notification.userInfo?["ranking"] as? Ranking {
                                    self?.printData(ranking: ranking)
@@ -31,7 +31,7 @@ class RankingForMaleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        model = RankingModel(sex:1, apiClient: DefaultAPIClient.shared)
+        model = RankingModel(sex: 1, apiClient: DefaultAPIClient.shared)
         model.requestRanking()
     }
     

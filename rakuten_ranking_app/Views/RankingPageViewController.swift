@@ -7,15 +7,12 @@
 
 import UIKit
 
-//VCをスワイプするとTabを変えるdelegateの設定のためにprotocolを設定
 protocol RankingPageViewControllerDelegate: AnyObject {
-    //pageVCがスワイプによって切り替わった後、セグメントを更新する
     func changeTabByViewController(at index: Int)
 }
 
 class RankingPageViewController: UIPageViewController,UIPageViewControllerDelegate {
     weak var updateTabNotificationDelegate: RankingPageViewControllerDelegate?
-    //↑RankingPageViewControllerがページ遷移を完了した時にセグメントの状態を更新するためにRankingViewControllerに通知を送る役割をしている
             
     private var controllers: [UIViewController] = []
 
@@ -34,17 +31,14 @@ class RankingPageViewController: UIPageViewController,UIPageViewControllerDelega
             print("エラー:storyboardからViewControllerの取得に失敗")
             return
         }
-        //controllers配列に追加
         self.controllers = [rankingForAllVC, rankingForMaleVC, rankingForFemaleVC]
             
         if !controllers.isEmpty {
-            //最初のビューコントローラをセット
             setViewControllers([controllers[0]], direction: .forward, animated: true, completion: nil)
             self.dataSource = self
         }
     }
     
-    //ページ遷移が完了したらデリゲートメソッド
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
             if completed, let visibleViewController = viewControllers?.first, let index = controllers.firstIndex(of: visibleViewController) {
                 updateTabNotificationDelegate?.changeTabByViewController(at: index)
@@ -75,12 +69,9 @@ extension RankingPageViewController: UIPageViewControllerDataSource {
             return nil
         }
     }
-    
-    //指定されたインデックスに基づいて特定のビューコントローラを表示
+
     func switchToViewController(at index: Int) {
-       //配列の範囲外へのアクセスを防ぐ
        if index >= 0 && index < controllers.count {
-         //表示するビューコントローラーを設定:選択されたインデックスのVCを抽出し、そのVCを現在表示するように設定
          setViewControllers([controllers[index]], direction: .forward, animated: false, completion: nil)
        }
     }

@@ -5,55 +5,62 @@
 //  Created by 櫻田龍之助 on 2024/05/13.
 //
 
-///データクラスの作成
+
 import Foundation
 
-public struct Ranking: Codable {
-    public var items: [ItemElement]
+struct Ranking: Codable {
+    var items: [ItemElement]
 
     enum CodingKeys: String, CodingKey {
         case items = "Items"
     }
 
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         items = try container.decodeIfPresent([ItemElement].self, forKey: .items) ?? []
     }
+    
+    func printData() {
+        for itemElement in items {
+            let item = itemElement.item
+            print("商品名: \(item.itemName)")
+        }
+    }
 }
 
-public struct ItemElement: Codable {
-    public let item: Item
+struct ItemElement: Codable {
+    let item: Item
 
     enum CodingKeys: String, CodingKey {
         case item = "Item"
     }
 }
 
-public struct Item: Codable {
-    public let affiliateRate, affiliateURL, asurakuArea, asurakuClosingTime: String
-    public let asurakuFlag, availability, carrier: Int
-    public let catchcopy: String
-    public let creditCardFlag: Int
-    public let endTime, genreID: String
-    public let hasPriceRange, imageFlag: Int
-    public let itemCaption, itemCode, itemName, itemPrice: String
-    public let itemPriceBaseField, itemPriceMax1, itemPriceMax2, itemPriceMax3: String
-    public let itemPriceMin1, itemPriceMin2, itemPriceMin3: String
-    public let itemURL: String
-    public let mediumImageUrls: [ImageURL]
-    public let pointRate: Int
-    public let pointRateEndTime, pointRateStartTime: String
-    public let postageFlag, rank: Int
-    public let reviewAverage: String
-    public let reviewCount: Int
-    public let shipOverseasArea: String
-    public let shipOverseasFlag: Int
-    public let shopAffiliateURL, shopCode, shopName: String
-    public let shopOfTheYearFlag: Int
-    public let shopURL: String
-    public let smallImageUrls: [ImageURL]
-    public let startTime: String
-    public let taxFlag: Int
+struct Item: Codable {
+    let affiliateRate, affiliateURL, asurakuArea, asurakuClosingTime: String
+    let asurakuFlag, availability, carrier: Int
+    let catchcopy: String
+    let creditCardFlag: Int
+    let endTime, genreID: String
+    let hasPriceRange, imageFlag: Int
+    let itemCaption, itemCode, itemName, itemPrice: String
+    let itemPriceBaseField, itemPriceMax1, itemPriceMax2, itemPriceMax3: String
+    let itemPriceMin1, itemPriceMin2, itemPriceMin3: String
+    let itemURL: String
+    let mediumImageUrls: [ImageURL]
+    let pointRate: Int
+    let pointRateEndTime, pointRateStartTime: String
+    let postageFlag, rank: Int
+    let reviewAverage: String
+    let reviewCount: Int
+    let shipOverseasArea: String
+    let shipOverseasFlag: Int
+    let shopAffiliateURL, shopCode, shopName: String
+    let shopOfTheYearFlag: Int
+    let shopURL: String
+    let smallImageUrls: [ImageURL]
+    let startTime: String
+    let taxFlag: Int
 
     enum CodingKeys: String, CodingKey {
         case affiliateRate
@@ -69,7 +76,7 @@ public struct Item: Codable {
         case smallImageUrls, startTime, taxFlag
     }
     
-    public init(from decoder: Decoder) throws {
+   init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
            affiliateRate = try container.decodeIfPresent(String.self, forKey: .affiliateRate) ?? ""
            affiliateURL = try container.decodeIfPresent(String.self, forKey: .affiliateURL) ?? ""
@@ -117,14 +124,14 @@ public struct Item: Codable {
     }
 }
 
-public struct ImageURL: Codable {
-    public let imageURL: String
+struct ImageURL: Codable {
+    let imageURL: String
 
     enum CodingKeys: String, CodingKey {
         case imageURL = "imageUrl"
     }
     
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL) ?? ""
     }

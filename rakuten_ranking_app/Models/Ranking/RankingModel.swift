@@ -8,12 +8,12 @@
 import Foundation
 
 final class RankingModel {
-    public let notificationCenter = NotificationCenter.default
-    public private(set) var ranking: Ranking! {
+    let notificationCenter = NotificationCenter.default
+    private(set) var ranking: Ranking! {
         didSet {
-            notificationCenter.post(name: .init(rawValue: "ranking"),
+            notificationCenter.post(name: .init(rawValue: Const.notificationName),
                                     object: nil,
-                                    userInfo: ["ranking": ranking!])
+                                    userInfo: [Const.notificationName: ranking!])
         }
     }
     private let rankingAPI: RankingAPI
@@ -48,16 +48,16 @@ final class RankingModel {
 
     let sex: SexType
     
-    public init(sex: Int? = nil, apiClient: APIClient) {
+   init(sex: Int? = nil, apiClient: APIClient) {
            self.rankingAPI = .init(apiClient: apiClient)
            self.sex = SexType(value: sex)
            print("現在取得しているランキング: \(self.sex.description)")
     }
 
     
-    public func requestRanking() {
+    func requestRanking() {
         let sexValue = sex.rawValue == 0 ? "" : "\(sex.rawValue)"
-        rankingAPI.requestRanking(sex:sexValue) { [weak self] result in
+        rankingAPI.requestRanking(sex: sexValue) { [weak self] result in
             DispatchQueue.main.async {
                 if case .success(let ranking) = result {
                     self?.ranking = ranking

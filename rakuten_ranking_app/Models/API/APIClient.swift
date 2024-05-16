@@ -28,25 +28,24 @@ extension APIError: LocalizedError {
     }
 }
 
-public enum HTTPMethod: String {
+enum HTTPMethod: String {
     case post
     case get
 }
 
-public protocol Request {
+protocol Request {
     var method: HTTPMethod { get }
     var path: String { get }
     var headerFields: [String: String] { get }
     var timeout: TimeInterval { get }
     var contentType: String { get }
     var accept: String { get }
-    //parameters プロパティを Request プロトコルに戻す
     var parameters: [String: Any] { get }
     
     func makeRequest() -> URLRequest
 }
 
-public extension Request {
+extension Request {
     var headerFields: [String: String] {
         return [:]
     }
@@ -64,7 +63,7 @@ public extension Request {
     }
 
     func makeRequest() -> URLRequest {
-        let baseURL = const.baseURL
+        let baseURL = Const.baseURL
         guard let baseURL = URL(string: baseURL) else {
             fatalError("無効なbaseURL")
         }
@@ -72,14 +71,10 @@ public extension Request {
         var urlRequest = URLRequest(url: url, timeoutInterval: timeout)
         urlRequest.httpMethod = method.rawValue
         
-        //protocolのparameterを取得し、一旦ローカル変数に代入してあげる
         var parameters = self.parameters
-        //parameterにupdateValueでapplicationIdの情報を追加する
-        parameters.updateValue(const.applicationId, forKey: "applicationId")
-        //URLパラメータを構築する
+        parameters.updateValue(Const.applicationId, forKey: "applicationId")
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         var queryItems = [URLQueryItem]()
-        //パラメータをURLクエリ項目に変換する
         for (key, value) in parameters {
             queryItems.append(URLQueryItem(name: key, value: "\(value)"))
         }
