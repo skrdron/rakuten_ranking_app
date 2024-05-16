@@ -11,5 +11,8 @@ import Foundation
 struct const {
     static let baseURL = "https://app.rakuten.co.jp/services/api/"
     static let applicationId = "1054850339030324271"
-    static let urlPath = "IchibaItem/Ranking/20220601?applicationId=\(applicationId)"
+    //APIリクエストURLで?applicationId が2回出現している　↓修正
+    static let urlPath = "IchibaItem/Ranking/20220601"
 }
+
+

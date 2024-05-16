@@ -38,8 +38,8 @@ final class RankingForAllViewController: UIViewController {
     
     private func printData(ranking: Ranking) {
         for itemElement in ranking.items {
-              let item = itemElement.item
-              print("商品名: \(item.itemName)")
-          }
+            let item = itemElement.item
+            print("商品名: \(item.itemName)")
+        }
     }
 }

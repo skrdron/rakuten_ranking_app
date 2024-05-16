@@ -40,7 +40,7 @@ public protocol Request {
     var timeout: TimeInterval { get }
     var contentType: String { get }
     var accept: String { get }
-    //parameters プロパティを Request プロトコルに戻
+    //parameters プロパティを Request プロトコルに戻す
     var parameters: [String: Any] { get }
     
     func makeRequest() -> URLRequest
@@ -76,12 +76,16 @@ public extension Request {
         var parameters = self.parameters
         //parameterにupdateValueでapplicationIdの情報を追加する
         parameters.updateValue(const.applicationId, forKey: "applicationId")
-        
-        if !parameters.isEmpty {
-            if let request = try? URLEncoding.default.encode(urlRequest, with: parameters) {
-                urlRequest = request
-            }
+        //URLパラメータを構築する
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        var queryItems = [URLQueryItem]()
+        //パラメータをURLクエリ項目に変換する
+        for (key, value) in parameters {
+            queryItems.append(URLQueryItem(name: key, value: "\(value)"))
         }
+               
+        urlComponents.queryItems = queryItems
+        urlRequest.url = urlComponents.url
 
         
         headerFields.forEach { key, value in
@@ -105,13 +109,13 @@ final class DefaultAPIClient: APIClient {
     private init() {}
 
     public func request(_ request: Request, completion: @escaping (Result<Data, APIError>) -> Void) {
-        AF.request(request.makeRequest()).responseData { response in
-            switch response.result {
-            case .success(let data):
-                completion(.success(data))
-            case .failure:
-                completion(.failure(response.response?.statusCode == nil ? .network : .server))
-            }
-        }
-    }
+         AF.request(request.makeRequest()).responseData { response in
+             switch response.result {
+             case .success(let data):
+                 completion(.success(data))
+             case .failure:
+                 completion(.failure(response.response?.statusCode == nil ? .network : .server))
+             }
+         }
+     }
 }

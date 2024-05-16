@@ -52,16 +52,17 @@ final class RankingModel {
            self.rankingAPI = .init(apiClient: apiClient)
            self.sex = SexType(value: sex)
            print("現在取得しているランキング: \(self.sex.description)")
-       }
+    }
+
     
-       public func requestRanking() {
-           let sexValue = sex.rawValue == 0 ? "" : "\(sex.rawValue)"
-           rankingAPI.requestRanking(sex:sexValue) { [weak self] result in
-               DispatchQueue.main.async {
-                   if case .success(let ranking) = result {
-                       self?.ranking = ranking
-                   }
-               }
-           }
-       }
+    public func requestRanking() {
+        let sexValue = sex.rawValue == 0 ? "" : "\(sex.rawValue)"
+        rankingAPI.requestRanking(sex:sexValue) { [weak self] result in
+            DispatchQueue.main.async {
+                if case .success(let ranking) = result {
+                    self?.ranking = ranking
+                }
+            }
+        }
+    }
 }
