@@ -40,6 +40,8 @@ public protocol Request {
     var timeout: TimeInterval { get }
     var contentType: String { get }
     var accept: String { get }
+    //parameters プロパティを Request プロトコルに戻
+    var parameters: [String: Any] { get }
     
     func makeRequest() -> URLRequest
 }
@@ -70,12 +72,17 @@ public extension Request {
         var urlRequest = URLRequest(url: url, timeoutInterval: timeout)
         urlRequest.httpMethod = method.rawValue
         
-        let parameter: Parameters? = ["applicationId": const.applicationId]
-            if let parameter = parameter, !parameter.isEmpty {
-                if let request = try? URLEncoding.default.encode(urlRequest, with: parameter) {
-                     urlRequest = request
+        //protocolのparameterを取得し、一旦ローカル変数に代入してあげる
+        var parameters = self.parameters
+        //parameterにupdateValueでapplicationIdの情報を追加する
+        parameters.updateValue(const.applicationId, forKey: "applicationId")
+        
+        if !parameters.isEmpty {
+            if let request = try? URLEncoding.default.encode(urlRequest, with: parameters) {
+                urlRequest = request
             }
         }
+
         
         headerFields.forEach { key, value in
             urlRequest.setValue(value, forHTTPHeaderField: key)
