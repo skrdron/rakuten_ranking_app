@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RankingModel {
+class RankingModel {
     let notificationCenter = NotificationCenter.default
     
     //取得したランキングデータを保持
@@ -29,18 +29,6 @@ final class RankingModel {
         case all
         case male
         case female
-        
-        //各ケースに対応する文字列値を取得
-        var sexValue: String {
-            switch self {
-              case .all:
-                return ""
-              case .male:
-                return "male"
-              case .female:
-                return "female"
-            }
-        }
    }
     
 
@@ -53,8 +41,7 @@ final class RankingModel {
 
    //指定された性別フィルターに基づいてランキングデータを取得
    func requestRanking() {
-       let sexValue = sex.sexValue
-       rankingAPI.requestRanking(sex: sexValue) { [weak self] result in
+       rankingAPI.requestRanking(sex: sex) { [weak self] result in
           DispatchQueue.main.async {
              if case .success(let ranking) = result {
                 self?.ranking = ranking

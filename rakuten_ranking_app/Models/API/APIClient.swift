@@ -98,7 +98,7 @@ protocol APIClient {
     func request(_ request: Request, completion: @escaping (Result<Data, APIError>) -> Void)
 }
 
-final class DefaultAPIClient: APIClient {
+class DefaultAPIClient: APIClient {
     public static let shared = DefaultAPIClient()
 
     private init() {}

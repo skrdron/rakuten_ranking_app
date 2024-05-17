@@ -22,9 +22,9 @@ class RankingForFemaleViewController: UIViewController {
     private func registerModel() {
       _ = model.notificationCenter
                .addObserver(forName: .init(rawValue: NotificationConst.rankingNotificationName),
-                            object: nil, queue: nil) { [weak self] notification in
+                            object: nil, queue: nil) { notification in
                                if let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking {
-                                   self?.printData(ranking: ranking)
+                                   ranking.printData()
                                }
       }
     }
@@ -34,12 +34,5 @@ class RankingForFemaleViewController: UIViewController {
         
         model = RankingModel(sex: .female, apiClient: DefaultAPIClient.shared)
         model.requestRanking()
-    }
-    
-    private func printData(ranking: Ranking) {
-        for itemElement in ranking.items {
-              let item = itemElement.item
-              print("商品名: \(item.itemName)")
-          }
     }
 }

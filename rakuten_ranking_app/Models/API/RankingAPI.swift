@@ -17,7 +17,7 @@ class RankingAPI{
     }
    
     //性別フィルター（sex）を使用してランキングデータを取得
-    func requestRanking(sex: String, completion: @escaping (Result<Ranking, APIError>) -> Void) {
+    func requestRanking(sex: RankingModel.SexType, completion: @escaping (Result<Ranking, APIError>) -> Void) {
         apiClient.request(RankingAPIRequest.getRanking(sex: sex)) { result in
             switch result {
             case .success(let data):
@@ -48,20 +48,18 @@ extension RankingRequest {
 
 enum RankingAPIRequest: RankingRequest {
     //性別フィルターを受け取り、それに応じたリクエストを作成
-    case getRanking(sex: String)
+    case getRanking(sex: RankingModel.SexType)
     //性別フィルターに基づいてリクエストのパラメータを設定
     public var parameters: [String: Any] {
         switch self {
         case .getRanking(let sex):
           switch sex {
-              case "all":
+          case .all:
                return [:]
-              case "male":
-                return ["sex": 1]
-              case "female":
-                return ["sex": 2]
-              default:
-                return [:]
+          case .male:
+               return ["sex": 1]
+          case .female:
+               return ["sex": 2]
           }
         }
     }
