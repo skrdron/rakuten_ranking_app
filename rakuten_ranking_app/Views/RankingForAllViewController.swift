@@ -8,9 +8,31 @@
 import UIKit
 
 class RankingForAllViewController: UIViewController {
+    
+    var model: RankingModel! {
+      didSet {
+        registerModel()
+      }
+    }
+    
+    deinit {
+      model.notificationCenter.removeObserver(self)
+    }
+
+    private func registerModel() {
+      _ = model.notificationCenter
+            .addObserver(forName: .init(rawValue: NotificationConst.rankingNotificationName),
+                            object: nil, queue: nil) { notification in
+                               if let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking {
+                                   ranking.printData()
+                               }
+      }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        model = RankingModel(sex: .all, apiClient: DefaultAPIClient.shared)
+        model.requestRanking()
     }
 }
