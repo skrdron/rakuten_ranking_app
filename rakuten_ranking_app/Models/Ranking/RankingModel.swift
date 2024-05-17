@@ -9,60 +9,57 @@ import Foundation
 
 final class RankingModel {
     let notificationCenter = NotificationCenter.default
+    
+    //取得したランキングデータを保持
     private(set) var ranking: Ranking! {
         didSet {
-            notificationCenter.post(name: .init(rawValue: NotificationConst.rankingNotificationName),
-                                    object: nil,
-                                    userInfo: [NotificationConst.rankingNotificationName: ranking!])
+            //rankingプロパティが新しいデータで更新されると、通知を送信
+            notificationCenter.post(
+                name: .init(rawValue: NotificationConst.rankingNotificationName),
+                object: nil,
+                userInfo: [NotificationConst.rankingNotificationName: ranking!]
+            )
         }
     }
+    
     private let rankingAPI: RankingAPI
     
-    enum SexType: Int {
-            case all = 0
-            case male = 1
-            case female = 2
-            
-            init(value: Int?) {
-                switch value {
-                case 1:
-                    self = .male
-                case 2:
-                    self = .female
-                default:
-                    self = .all
-                }
-            }
-            
-            var description: String {
-                switch self {
-                case .all:
-                    return "総合ランキング"
-                case .male:
-                    return "男性ランキング"
-                case .female:
-                    return "女性ランキング"
-                }
+    //ランキングデータを取得する際のフィルター条件
+    enum SexType {
+        case all
+        case male
+        case female
+        
+        //各ケースに対応する文字列値を取得
+        var sexValue: String {
+            switch self {
+              case .all:
+                return ""
+              case .male:
+                return "male"
+              case .female:
+                return "female"
             }
         }
-
-    let sex: SexType
+   }
     
-   init(sex: Int? = nil, apiClient: APIClient) {
-           self.rankingAPI = .init(apiClient: apiClient)
-           self.sex = SexType(value: sex)
-           print("現在取得しているランキング: \(self.sex.description)")
-    }
 
+   let sex: SexType
     
-    func requestRanking() {
-        let sexValue = sex.rawValue == 0 ? "" : "\(sex.rawValue)"
-        rankingAPI.requestRanking(sex: sexValue) { [weak self] result in
-            DispatchQueue.main.async {
-                if case .success(let ranking) = result {
-                    self?.ranking = ranking
-                }
-            }
-        }
+   init(sex: SexType , apiClient: APIClient) {
+      self.rankingAPI = .init(apiClient: apiClient)
+      self.sex = sex
+   }
+
+   //指定された性別フィルターに基づいてランキングデータを取得
+   func requestRanking() {
+       let sexValue = sex.sexValue
+       rankingAPI.requestRanking(sex: sexValue) { [weak self] result in
+          DispatchQueue.main.async {
+             if case .success(let ranking) = result {
+                self?.ranking = ranking
+             }
+          }
+       }
     }
 }

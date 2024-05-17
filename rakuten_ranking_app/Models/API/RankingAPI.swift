@@ -7,14 +7,16 @@
 
 import Foundation
 
-
+//APIクライアントを通じてランキングデータを取得す
 class RankingAPI{
     private let apiClient: APIClient
 
+    //apiClientを初期化
     init(apiClient: APIClient) {
       self.apiClient = apiClient
     }
    
+    //性別フィルター（sex）を使用してランキングデータを取得
     func requestRanking(sex: String, completion: @escaping (Result<Ranking, APIError>) -> Void) {
         apiClient.request(RankingAPIRequest.getRanking(sex: sex)) { result in
             switch result {
@@ -45,15 +47,21 @@ extension RankingRequest {
 }
 
 enum RankingAPIRequest: RankingRequest {
+    //性別フィルターを受け取り、それに応じたリクエストを作成
     case getRanking(sex: String)
-
+    //性別フィルターに基づいてリクエストのパラメータを設定
     public var parameters: [String: Any] {
         switch self {
         case .getRanking(let sex):
-          if sex.isEmpty {
-            return [:]
-          } else {
-            return ["sex": sex]
+          switch sex {
+              case "all":
+               return [:]
+              case "male":
+                return ["sex": 1]
+              case "female":
+                return ["sex": 2]
+              default:
+                return [:]
           }
         }
     }

@@ -31,7 +31,7 @@ class RankingForMaleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        model = RankingModel(sex: 1, apiClient: DefaultAPIClient.shared)
+        model = RankingModel(sex: .male, apiClient: DefaultAPIClient.shared)
         model.requestRanking()
     }
     
