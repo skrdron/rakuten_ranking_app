@@ -21,9 +21,9 @@ class RankingForFemaleViewController: UIViewController {
 
     private func registerModel() {
       _ = model.notificationCenter
-               .addObserver(forName: .init(rawValue: Const.notificationName),
+               .addObserver(forName: .init(rawValue: NotificationConst.rankingNotificationName),
                             object: nil, queue: nil) { [weak self] notification in
-                               if let ranking = notification.userInfo?["ranking"] as? Ranking {
+                               if let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking {
                                    self?.printData(ranking: ranking)
                                }
       }

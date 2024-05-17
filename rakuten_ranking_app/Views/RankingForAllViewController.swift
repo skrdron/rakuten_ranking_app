@@ -21,9 +21,9 @@ class RankingForAllViewController: UIViewController {
 
     private func registerModel() {
       _ = model.notificationCenter
-            .addObserver(forName: .init(rawValue: Const.notificationName),
+            .addObserver(forName: .init(rawValue: NotificationConst.rankingNotificationName),
                             object: nil, queue: nil) { notification in
-                               if let ranking = notification.userInfo?[Const.notificationName] as? Ranking {
+                               if let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking {
                                    ranking.printData()
                                }
       }

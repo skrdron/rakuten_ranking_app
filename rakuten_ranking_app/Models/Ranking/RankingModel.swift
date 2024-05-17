@@ -11,9 +11,9 @@ final class RankingModel {
     let notificationCenter = NotificationCenter.default
     private(set) var ranking: Ranking! {
         didSet {
-            notificationCenter.post(name: .init(rawValue: Const.notificationName),
+            notificationCenter.post(name: .init(rawValue: NotificationConst.rankingNotificationName),
                                     object: nil,
-                                    userInfo: [Const.notificationName: ranking!])
+                                    userInfo: [NotificationConst.rankingNotificationName: ranking!])
         }
     }
     private let rankingAPI: RankingAPI

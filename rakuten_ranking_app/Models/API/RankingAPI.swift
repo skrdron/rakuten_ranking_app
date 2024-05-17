@@ -40,7 +40,7 @@ extension RankingRequest {
     }
     
     var path: String {
-        return Const.rankingAPIUrlPath
+        return APIPathConst.rankingAPIUrlPath
     }
 }
 

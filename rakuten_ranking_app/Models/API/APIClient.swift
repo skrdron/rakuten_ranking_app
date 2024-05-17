@@ -63,7 +63,7 @@ extension Request {
     }
 
     func makeRequest() -> URLRequest {
-        let baseURL = Const.baseURL
+        let baseURL = NetworkConst.baseURL
         guard let baseURL = URL(string: baseURL) else {
             fatalError("無効なbaseURL")
         }
@@ -72,7 +72,7 @@ extension Request {
         urlRequest.httpMethod = method.rawValue
         
         var parameters = self.parameters
-        parameters.updateValue(Const.applicationId, forKey: "applicationId")
+        parameters.updateValue(NetworkConst.applicationId, forKey: "applicationId")
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         var queryItems = [URLQueryItem]()
         for (key, value) in parameters {
