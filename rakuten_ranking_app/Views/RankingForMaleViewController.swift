@@ -26,11 +26,14 @@ class RankingForMaleViewController: UIViewController {
       _ = model.notificationCenter
             .addObserver(forName: .init(rawValue: NotificationConst.rankingNotificationName),
                             object: nil, queue: nil) { notification in
-                               if let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking {
-                                   self.items = ranking.items
-                                   self.tableView.reloadData()
+                               guard let sexType = notification.userInfo?["sexType"] as? RankingModel.SexType,
+                                     sexType == .male,
+                                     let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking else {
+                                 return
                                }
-      }
+                               self.items = ranking.items
+                               self.tableView.reloadData()
+                            }
     }
     
     override func viewDidLoad() {
@@ -38,6 +41,7 @@ class RankingForMaleViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         
         model = RankingModel(sex: .male, apiClient: DefaultAPIClient.shared)
         model.requestRanking()
@@ -53,11 +57,10 @@ extension RankingForMaleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankingForMaleCell", for: indexPath) as! RankingTableViewCell
         let item = items[indexPath.row].item
-        tableView.rowHeight = 110
         
         cell.rankingLabel.text = "\(item.rank)"
         cell.productNameLabel.text = item.itemName
-        cell.priceLabel.text = "¥\(item.itemPrice)"
+        cell.priceLabel.text = "¥\(item.formatPrice())"
         
         if let urlString = item.mediumImageUrls.first?.imageURL, let url = URL(string: urlString) {
             cell.productImageView.image = nil 
@@ -79,5 +82,4 @@ extension RankingForMaleViewController: UITableViewDataSource {
 }
 
 extension RankingForMaleViewController: UITableViewDelegate {
-
 }

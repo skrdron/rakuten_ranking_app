@@ -17,7 +17,10 @@ class RankingModel {
             notificationCenter.post(
                 name: .init(rawValue: NotificationConst.rankingNotificationName),
                 object: nil,
-                userInfo: [NotificationConst.rankingNotificationName: ranking!]
+                userInfo: [
+                    NotificationConst.rankingNotificationName: ranking!,
+                    "sexType": sex
+                ]
             )
         }
     }

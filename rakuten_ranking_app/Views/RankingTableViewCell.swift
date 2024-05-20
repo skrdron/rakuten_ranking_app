@@ -14,3 +14,4 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var rankingLabel: UILabel!
 }
+

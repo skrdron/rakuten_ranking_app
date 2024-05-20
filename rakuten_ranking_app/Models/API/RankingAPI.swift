@@ -57,9 +57,9 @@ enum RankingAPIRequest: RankingRequest {
           case .all:
                return [:]
           case .male:
-               return ["sex": 1]
+               return ["sex": 0]
           case .female:
-               return ["sex": 2]
+               return ["sex": 1]
           }
         }
     }
