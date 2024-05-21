@@ -32,9 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="InM-vT-8Ue">
-                                <rect key="frame" x="0.0" y="133" width="393" height="636"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InM-vT-8Ue">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <connections>
                                     <segue destination="w0x-1f-RCE" kind="embed" id="vjY-kx-BcM"/>
                                 </connections>
@@ -42,6 +41,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rrt-zv-1HZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="InM-vT-8Ue" firstAttribute="top" secondItem="rrt-zv-1HZ" secondAttribute="top" id="Mhr-wE-g9C"/>
+                            <constraint firstItem="InM-vT-8Ue" firstAttribute="leading" secondItem="rrt-zv-1HZ" secondAttribute="leading" id="WKx-KD-6Wa"/>
+                            <constraint firstItem="InM-vT-8Ue" firstAttribute="trailing" secondItem="rrt-zv-1HZ" secondAttribute="trailing" id="XLM-V4-8Gr"/>
+                            <constraint firstItem="InM-vT-8Ue" firstAttribute="bottom" secondItem="rrt-zv-1HZ" secondAttribute="bottom" id="hCf-8U-v8r"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="orf-fR-MYz"/>
                 </viewController>
