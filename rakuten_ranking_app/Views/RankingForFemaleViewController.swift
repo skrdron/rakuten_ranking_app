@@ -59,7 +59,7 @@ extension RankingForFemaleViewController: UITableViewDataSource {
         
         cell.rankingLabel.text = "\(item.rank)"
         cell.productNameLabel.text = item.itemName
-        cell.priceLabel.text = "¥\(item.formatPrice())"
+        cell.priceLabel.text = PriceFormatter.formatPrice(item.itemPrice)
         
         if let urlString = item.mediumImageUrls.first?.imageURL, let url = URL(string: urlString) {
             cell.productImageView.image = nil

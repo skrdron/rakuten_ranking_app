@@ -115,18 +115,6 @@ struct Item: Codable {
            startTime = try container.decodeIfPresent(String.self, forKey: .startTime) ?? ""
            taxFlag = try container.decodeIfPresent(Int.self, forKey: .taxFlag) ?? 0
     }
-    
-    
-    func formatPrice() -> String {
-        guard let priceNumber = Int(itemPrice) else { return itemPrice }
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        if let formattedPrice = numberFormatter.string(from: NSNumber(value: priceNumber)) {
-            return formattedPrice
-        } else {
-            return itemPrice
-        }
-    }
 }
 
 struct ImageURL: Codable {
