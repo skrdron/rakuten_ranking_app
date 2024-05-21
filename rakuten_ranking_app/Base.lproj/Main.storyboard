@@ -219,10 +219,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCF-pJ-Wre" userLabel="ViewForSpacing">
-                                                    <rect key="frame" x="0.0" y="16" width="361" height="126"/>
+                                                    <rect key="frame" x="0.0" y="8" width="361" height="126"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xM4-jk-V9E">
-                                                            <rect key="frame" x="10" y="53.333333333333329" width="32" height="19.333333333333329"/>
+                                                            <rect key="frame" x="10" y="53.333333333333336" width="32" height="19.333333333333336"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="fEI-er-R2p"/>
                                                             </constraints>
@@ -282,10 +282,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="BCF-pJ-Wre" firstAttribute="top" secondItem="e3G-yu-mgA" secondAttribute="top" constant="16" id="1Xk-qg-4zB"/>
+                                                <constraint firstItem="BCF-pJ-Wre" firstAttribute="top" secondItem="e3G-yu-mgA" secondAttribute="top" constant="8" id="1Xk-qg-4zB"/>
                                                 <constraint firstItem="BCF-pJ-Wre" firstAttribute="leading" secondItem="e3G-yu-mgA" secondAttribute="leading" id="djz-rU-cMf"/>
                                                 <constraint firstAttribute="trailing" secondItem="BCF-pJ-Wre" secondAttribute="trailing" id="vxz-g9-dnC"/>
-                                                <constraint firstAttribute="bottom" secondItem="BCF-pJ-Wre" secondAttribute="bottom" id="zTa-ZL-9NU"/>
+                                                <constraint firstAttribute="bottom" secondItem="BCF-pJ-Wre" secondAttribute="bottom" constant="8" id="zTa-ZL-9NU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="RankingForAllCell"/>
@@ -343,7 +343,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azi-u2-qZc" userLabel="ViewForSpacing">
-                                                    <rect key="frame" x="0.0" y="16" width="361" height="126"/>
+                                                    <rect key="frame" x="0.0" y="8" width="361" height="126"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x5O-86-JuU">
                                                             <rect key="frame" x="50" y="31" width="64" height="64"/>
@@ -353,7 +353,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0A-1d-JGq">
-                                                            <rect key="frame" x="10" y="53.333333333333329" width="32" height="19.333333333333329"/>
+                                                            <rect key="frame" x="10" y="53.333333333333336" width="32" height="19.333333333333336"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="0pr-J8-mtJ"/>
                                                             </constraints>
@@ -408,8 +408,8 @@
                                             <constraints>
                                                 <constraint firstItem="Azi-u2-qZc" firstAttribute="leading" secondItem="QUe-w5-Xyc" secondAttribute="leading" id="3O1-u5-lpg"/>
                                                 <constraint firstAttribute="trailing" secondItem="Azi-u2-qZc" secondAttribute="trailing" id="GHm-sg-Sey"/>
-                                                <constraint firstItem="Azi-u2-qZc" firstAttribute="top" secondItem="QUe-w5-Xyc" secondAttribute="top" constant="16" id="hjg-WV-sjB"/>
-                                                <constraint firstAttribute="bottom" secondItem="Azi-u2-qZc" secondAttribute="bottom" id="t6L-fV-h8d"/>
+                                                <constraint firstItem="Azi-u2-qZc" firstAttribute="top" secondItem="QUe-w5-Xyc" secondAttribute="top" constant="8" id="hjg-WV-sjB"/>
+                                                <constraint firstAttribute="bottom" secondItem="Azi-u2-qZc" secondAttribute="bottom" constant="8" id="t6L-fV-h8d"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="RankingForMaleCell"/>
@@ -466,7 +466,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-ho-twO" userLabel="ViewForSpacing">
-                                                    <rect key="frame" x="0.0" y="16" width="361" height="126"/>
+                                                    <rect key="frame" x="0.0" y="8" width="361" height="126"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelcwgrefhwufvgsisiyfvsfw" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyu-md-PJf">
                                                             <rect key="frame" x="122" y="16" width="201" height="52"/>
@@ -493,7 +493,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6je-kf-PJl">
-                                                            <rect key="frame" x="10" y="53.333333333333329" width="32" height="19.333333333333329"/>
+                                                            <rect key="frame" x="10" y="53.333333333333336" width="32" height="19.333333333333336"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="h1B-Lx-RrL"/>
                                                             </constraints>
@@ -531,8 +531,8 @@
                                             <constraints>
                                                 <constraint firstItem="gmx-ho-twO" firstAttribute="leading" secondItem="Qe8-rH-RdR" secondAttribute="leading" id="CSA-zh-6Bb"/>
                                                 <constraint firstAttribute="trailing" secondItem="gmx-ho-twO" secondAttribute="trailing" id="OK4-uC-Qpn"/>
-                                                <constraint firstAttribute="bottom" secondItem="gmx-ho-twO" secondAttribute="bottom" id="tbk-c7-QTk"/>
-                                                <constraint firstItem="gmx-ho-twO" firstAttribute="top" secondItem="Qe8-rH-RdR" secondAttribute="top" constant="16" id="zTb-vL-xpq"/>
+                                                <constraint firstAttribute="bottom" secondItem="gmx-ho-twO" secondAttribute="bottom" constant="8" id="tbk-c7-QTk"/>
+                                                <constraint firstItem="gmx-ho-twO" firstAttribute="top" secondItem="Qe8-rH-RdR" secondAttribute="top" constant="8" id="zTb-vL-xpq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="RankingForFemaleCell"/>
