@@ -63,20 +63,10 @@ extension RankingForAllViewController: UITableViewDataSource {
         cell.rankingLabel.text = "\(item.rank)"
         cell.productNameLabel.text = item.itemName
         cell.priceLabel.text = PriceFormatter.formatPrice(item.itemPrice)
-        
-        if let urlString = item.mediumImageUrls.first?.imageURL, let url = URL(string: urlString) {
-            cell.productImageView.image = nil 
-              
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-               if let data = data, error == nil {
-                  DispatchQueue.main.async {
-                     if let currentIndexPath = tableView.indexPath(for: cell), currentIndexPath == indexPath {
-                        cell.productImageView.image = UIImage(data: data)
-                     }
-                  }
-               }
-            }
-            task.resume()
+        cell.productImageView.image = nil
+             
+        if let urlString = item.mediumImageUrls.first?.imageURL {
+            ImageFetcher.fetchImage(for: cell, at: indexPath, from: urlString, in: tableView)
         }
         
         return cell
