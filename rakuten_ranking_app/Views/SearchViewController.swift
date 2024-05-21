@@ -9,6 +9,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var SearchBar: UISearchBar!
+    @IBOutlet weak var ellipsis: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

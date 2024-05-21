@@ -15,8 +15,22 @@
                     <view key="view" contentMode="scaleToFill" id="JT6-0Q-quW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H87-MW-8Yt">
+                                <rect key="frame" x="0.0" y="133" width="393" height="636"/>
+                                <connections>
+                                    <segue destination="QZd-Cr-zFz" kind="embed" id="G9C-nq-pA4"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="R74-fg-Gdt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="H87-MW-8Yt" firstAttribute="top" secondItem="R74-fg-Gdt" secondAttribute="top" constant="30" id="IZ4-5W-9fy"/>
+                            <constraint firstItem="R74-fg-Gdt" firstAttribute="bottom" secondItem="H87-MW-8Yt" secondAttribute="bottom" id="R75-z9-0op"/>
+                            <constraint firstItem="H87-MW-8Yt" firstAttribute="leading" secondItem="R74-fg-Gdt" secondAttribute="leading" id="UTn-eg-5qJ"/>
+                            <constraint firstItem="R74-fg-Gdt" firstAttribute="trailing" secondItem="H87-MW-8Yt" secondAttribute="trailing" id="Xmi-C7-ivL"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fAI-If-7ee"/>
                 </viewController>
@@ -560,9 +574,48 @@
             </objects>
             <point key="canvasLocation" x="13307.633587786258" y="-2204.2253521126763"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="om7-Ge-coI">
+            <objects>
+                <viewController id="QZd-Cr-zFz" customClass="SearchViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f24-Ty-sLP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="636"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KOF-A5-e0Z">
+                                <rect key="frame" x="16" y="11" width="311" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="311" id="yy3-SL-rj2"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QZd-Cr-zFz" id="4Bb-0O-2ad"/>
+                                </connections>
+                            </searchBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="ellipsis" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Nb-sl-uPK">
+                                <rect key="frame" x="330" y="27" width="19" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KOF-A5-e0Z" firstAttribute="top" secondItem="f24-Ty-sLP" secondAttribute="top" constant="11" id="620-mU-icC"/>
+                            <constraint firstItem="KOF-A5-e0Z" firstAttribute="leading" secondItem="f24-Ty-sLP" secondAttribute="leading" constant="16" id="msF-CC-3Wa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="SearchBar" destination="KOF-A5-e0Z" id="H8D-oL-iag"/>
+                        <outlet property="ellipsis" destination="8Nb-sl-uPK" id="c1a-dj-I9I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbI-OF-t4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11185" y="262"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bookmark.fill" catalog="system" width="110" height="128"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
