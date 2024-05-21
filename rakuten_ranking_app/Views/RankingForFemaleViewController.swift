@@ -56,16 +56,9 @@ extension RankingForFemaleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankingForFemaleCell", for: indexPath) as! RankingTableViewCell
         let item = items[indexPath.row].item
-        
-        cell.rankingLabel.text = "\(item.rank)"
-        cell.productNameLabel.text = item.itemName
-        cell.priceLabel.text = PriceFormatter.formatPrice(item.itemPrice)
-        cell.productImageView.image = nil
-             
-        if let urlString = item.mediumImageUrls.first?.imageURL {
-            ImageFetcher.fetchImage(for: cell, at: indexPath, from: urlString, in: tableView)
-        }
-        
+          
+        cell.configure(with: item, at: indexPath, in: tableView)
+          
         return cell
     }
 }
