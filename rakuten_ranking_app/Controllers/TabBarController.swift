@@ -19,9 +19,9 @@ class TabBarController: UITabBarController {
     private func configureTabs(){
         //Storyboard IDでインスタンス化
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let rankingView = storyboard.instantiateViewController(withIdentifier: "rankingView") as! RankingViewController
-        let searchView = storyboard.instantiateViewController(withIdentifier: "searchView") as! SearchViewController
-        let bookmarkView = storyboard.instantiateViewController(withIdentifier: "bookmarkView") as! BookmarkViewController
+        let rankingView = storyboard.instantiateViewController(withIdentifier: "rankingView")
+        let searchView = storyboard.instantiateViewController(withIdentifier: "searchView")
+        let bookmarkView = storyboard.instantiateViewController(withIdentifier: "bookmarkView") 
             
         //タブイメージの設定
         rankingView.tabBarItem.image = UIImage(systemName: "chart.line.uptrend.xyaxis")

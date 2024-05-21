@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="10220.6106870229" y="261.97183098591552"/>
         </scene>
-        <!--Ranking View Controller-->
+        <!--View Controller-->
         <scene sceneID="rGD-kU-pVp">
             <objects>
-                <viewController storyboardIdentifier="rankingView" id="cd5-9w-6WZ" customClass="RankingViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rankingView" id="cd5-9w-6WZ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GmB-7v-TA9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,7 +151,7 @@
             <objects>
                 <viewController id="w0x-1f-RCE" customClass="RankingViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="822-mH-HRd">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="636"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ljd-Ez-giX">
@@ -163,7 +163,7 @@
                                 </segments>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1Q-Gm-ez6">
-                                <rect key="frame" x="0.0" y="38" width="393" height="598"/>
+                                <rect key="frame" x="0.0" y="38" width="393" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>

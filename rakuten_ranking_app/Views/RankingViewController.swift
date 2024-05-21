@@ -1,4 +1,4 @@
-//
+///Users/ryunosukesakurada/Desktop/dev/swift_tutorial/rakuten_ranking_app/rakuten_ranking_app/Base.lproj/Main.storyboard
 //  RankingView.swift
 //  rakuten_ranking_app
 //
@@ -50,7 +50,6 @@ class RankingViewController: UIViewController, UIPageViewControllerDelegate, Ran
              print("segmentedControlがStoryboardで正しく接続されていません。")
              return
          }
-         
          segmentedControl.removeAllSegments()
          segmentedControl.insertSegment(withTitle: "総合", at: 0, animated: false)
          segmentedControl.insertSegment(withTitle: "男性", at: 1, animated: false)
