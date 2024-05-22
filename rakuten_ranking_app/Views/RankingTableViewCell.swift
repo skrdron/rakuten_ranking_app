@@ -21,7 +21,9 @@ class RankingTableViewCell: UITableViewCell {
         productImageView.image = nil
           
         if let urlString = item.mediumImageUrls.first?.imageURL {
-          ImageFetcher.fetchImage(for: self, at: indexPath, from: urlString, in: tableView)
+          ImageFetcher.fetchImage(from: urlString) { [weak self] image in
+             self?.productImageView.image = image
+          }
         }
     }
 }

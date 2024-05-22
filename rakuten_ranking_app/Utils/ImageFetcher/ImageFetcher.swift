@@ -9,23 +9,23 @@ import Foundation
 import UIKit
 
 class ImageFetcher {
-    static func fetchImage(for cell: UITableViewCell, at indexPath: IndexPath, from urlString: String, in tableView: UITableView) {
+    static func fetchImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: urlString) else {
+            completion(nil)
             return
         }
-        
+
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
+                completion(nil)
                 return
             }
-            
+
             DispatchQueue.main.async {
-                if let currentIndexPath = tableView.indexPath(for: cell), currentIndexPath == indexPath {
-                    (cell as? RankingTableViewCell)?.productImageView.image = UIImage(data: data)
-                }
+                completion(UIImage(data: data))
             }
         }
-        
+
         task.resume()
     }
 }

@@ -133,6 +133,7 @@
 		6D6781B82BEA268000423201 /* rakuten_ranking_app */ = {
 			isa = PBXGroup;
 			children = (
+				6DAFB3F42BFDA3450092F9BC /* Utils */,
 				6D6781EC2BEA2D0300423201 /* Controllers */,
 				6D6781EA2BEA2CAD00423201 /* Models */,
 				6D6781E92BEA2C9E00423201 /* Views */,
@@ -182,8 +183,6 @@
 		6D6781EA2BEA2CAD00423201 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6DAFB3EF2BFC69BE0092F9BC /* ImageFetcher */,
-				6DAFB3EE2BFC69AF0092F9BC /* PriceFormatter */,
 				6D6782612BF211B400423201 /* JSONExport */,
 				6D67825E2BF2116200423201 /* Ranking */,
 				6D6782542BF2100C00423201 /* API */,
@@ -238,6 +237,15 @@
 				6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */,
 			);
 			path = ImageFetcher;
+			sourceTree = "<group>";
+		};
+		6DAFB3F42BFDA3450092F9BC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6DAFB3EF2BFC69BE0092F9BC /* ImageFetcher */,
+				6DAFB3EE2BFC69AF0092F9BC /* PriceFormatter */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

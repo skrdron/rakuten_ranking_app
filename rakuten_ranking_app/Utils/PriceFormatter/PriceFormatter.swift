@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class PriceFormatter {
     static func formatPrice(_ itemPrice: String) -> String {
         guard let priceNumber = Double(itemPrice) else { return itemPrice }
@@ -18,7 +17,7 @@ class PriceFormatter {
         if let formattedPrice = numberFormatter.string(from: NSNumber(value: priceNumber)) {
             return formattedPrice
         } else {
-            return itemPrice
+            return ""
         }
     }
 }
