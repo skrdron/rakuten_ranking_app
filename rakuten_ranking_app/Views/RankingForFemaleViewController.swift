@@ -8,12 +8,15 @@
 import UIKit
 
 class RankingForFemaleViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
     
     var model: RankingModel! {
       didSet {
         registerModel()
       }
     }
+    
+    private var items: [ItemElement] = []
     
     deinit {
       model.notificationCenter.removeObserver(self)
@@ -23,16 +26,43 @@ class RankingForFemaleViewController: UIViewController {
       _ = model.notificationCenter
                .addObserver(forName: .init(rawValue: NotificationConst.rankingNotificationName),
                             object: nil, queue: nil) { notification in
-                               if let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking {
-                                   ranking.printData()
-                               }
-      }
+                              guard let sexType = notification.userInfo?["sexType"] as? RankingModel.SexType,
+                                  sexType == .female,
+                                  let ranking = notification.userInfo?[NotificationConst.rankingNotificationName] as? Ranking else {
+                                return
+                              }
+                              self.items = ranking.items
+                              self.tableView.reloadData()
+                            }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        
         model = RankingModel(sex: .female, apiClient: DefaultAPIClient.shared)
         model.requestRanking()
     }
 }
+
+extension RankingForFemaleViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RankingForFemaleCell", for: indexPath) as! RankingTableViewCell
+        let item = items[indexPath.row].item
+          
+        cell.configure(with: item, at: indexPath, in: tableView)
+          
+        return cell
+    }
+}
+
+extension RankingForFemaleViewController: UITableViewDelegate {
+}
+

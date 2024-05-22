@@ -19,13 +19,6 @@ struct Ranking: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         items = try container.decodeIfPresent([ItemElement].self, forKey: .items) ?? []
     }
-    
-    func printData() {
-        for itemElement in items {
-            let item = itemElement.item
-            print("商品名: \(item.itemName)")
-        }
-    }
 }
 
 struct ItemElement: Codable {
@@ -136,3 +129,4 @@ struct ImageURL: Codable {
         imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL) ?? ""
     }
 }
+
