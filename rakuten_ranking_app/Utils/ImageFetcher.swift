@@ -20,10 +20,8 @@ class ImageFetcher {
                 completion(nil)
                 return
             }
-
-            DispatchQueue.main.async {
-                completion(UIImage(data: data))
-            }
+            let image = UIImage(data: data)
+            completion(image)
         }
 
         task.resume()

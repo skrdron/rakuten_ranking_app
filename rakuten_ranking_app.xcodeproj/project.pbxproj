@@ -223,27 +223,11 @@
 			path = JSONExport;
 			sourceTree = "<group>";
 		};
-		6DAFB3EE2BFC69AF0092F9BC /* PriceFormatter */ = {
-			isa = PBXGroup;
-			children = (
-				6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */,
-			);
-			path = PriceFormatter;
-			sourceTree = "<group>";
-		};
-		6DAFB3EF2BFC69BE0092F9BC /* ImageFetcher */ = {
-			isa = PBXGroup;
-			children = (
-				6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */,
-			);
-			path = ImageFetcher;
-			sourceTree = "<group>";
-		};
 		6DAFB3F42BFDA3450092F9BC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6DAFB3EF2BFC69BE0092F9BC /* ImageFetcher */,
-				6DAFB3EE2BFC69AF0092F9BC /* PriceFormatter */,
+				6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */,
+				6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

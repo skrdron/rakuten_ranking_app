@@ -22,7 +22,9 @@ class RankingTableViewCell: UITableViewCell {
           
         if let urlString = item.mediumImageUrls.first?.imageURL {
           ImageFetcher.fetchImage(from: urlString) { [weak self] image in
-             self?.productImageView.image = image
+              DispatchQueue.main.async {
+                 self?.productImageView.image = image
+              }
           }
         }
     }
