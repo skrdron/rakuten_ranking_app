@@ -59,26 +59,9 @@ extension RankingForAllViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankingForAllCell", for: indexPath) as! RankingTableViewCell
         let item = items[indexPath.row].item
-        
-        cell.rankingLabel.text = "\(item.rank)"
-        cell.productNameLabel.text = item.itemName
-        cell.priceLabel.text = "¥\(item.formatPrice())"
-        
-        if let urlString = item.mediumImageUrls.first?.imageURL, let url = URL(string: urlString) {
-            cell.productImageView.image = nil 
-              
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-               if let data = data, error == nil {
-                  DispatchQueue.main.async {
-                     if let currentIndexPath = tableView.indexPath(for: cell), currentIndexPath == indexPath {
-                        cell.productImageView.image = UIImage(data: data)
-                     }
-                  }
-               }
-            }
-            task.resume()
-        }
-        
+          
+        cell.configure(with: item, at: indexPath, in: tableView)
+          
         return cell
     }
 }

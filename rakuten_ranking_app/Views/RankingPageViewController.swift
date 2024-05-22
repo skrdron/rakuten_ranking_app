@@ -31,6 +31,7 @@ class RankingPageViewController: UIPageViewController,UIPageViewControllerDelega
             print("エラー:storyboardからViewControllerの取得に失敗")
             return
         }
+        
         self.controllers = [rankingForAllVC, rankingForMaleVC, rankingForFemaleVC]
             
         if !controllers.isEmpty {

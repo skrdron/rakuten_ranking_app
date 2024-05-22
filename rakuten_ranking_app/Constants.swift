@@ -18,6 +18,10 @@ struct APIPathConst {
 
 struct NotificationConst {
     static let rankingNotificationName = "ranking"
+    struct UserInfoKeys {
+        static let ranking = "ranking"
+        static let sexType = "sexType"
+    }
 }
 
 
