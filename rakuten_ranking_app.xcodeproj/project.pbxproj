@@ -32,10 +32,10 @@
 		6D6782672BF4A6CF00423201 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6782662BF4A6CF00423201 /* Constants.swift */; };
 		6D6BA0AE2BFED9B200C3B906 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6D6BA0AD2BFED9B200C3B906 /* SVGKit */; };
 		6D6BA0B02BFED9B200C3B906 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6D6BA0AF2BFED9B200C3B906 /* SVGKitSwift */; };
+		6D6BA0B32BFEEAAF00C3B906 /* more_2_line.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6D6BA0B22BFEEAAF00C3B906 /* more_2_line.svg */; };
 		6DAFB3ED2BF753E30092F9BC /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3EC2BF753E30092F9BC /* RankingTableViewCell.swift */; };
 		6DAFB3F12BFC69D30092F9BC /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */; };
 		6DAFB3F32BFC69E20092F9BC /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */; };
-		6DFFF9362BFF374200B123AE /* more_2_line.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6DFFF9352BFF374200B123AE /* more_2_line.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,10 +81,10 @@
 		6D67825F2BF2117400423201 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
 		6D6782622BF211D100423201 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		6D6782662BF4A6CF00423201 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6D6BA0B22BFEEAAF00C3B906 /* more_2_line.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = more_2_line.svg; path = ../../../../../../Downloads/more_2_line.svg; sourceTree = "<group>"; };
 		6DAFB3EC2BF753E30092F9BC /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
 		6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
-		6DFFF9352BFF374200B123AE /* more_2_line.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = more_2_line.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,14 +116,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6D62B82C2BFF2C96001BEDC4 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				6DFFF9352BFF374200B123AE /* more_2_line.svg */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		6D6781AD2BEA268000423201 = {
 			isa = PBXGroup;
 			children = (
@@ -147,7 +139,7 @@
 		6D6781B82BEA268000423201 /* rakuten_ranking_app */ = {
 			isa = PBXGroup;
 			children = (
-				6D62B82C2BFF2C96001BEDC4 /* Images */,
+				6D6BA0B12BFEEA8E00C3B906 /* Images */,
 				6DAFB3F42BFDA3450092F9BC /* Utils */,
 				6D6781EC2BEA2D0300423201 /* Controllers */,
 				6D6781EA2BEA2CAD00423201 /* Models */,
@@ -236,6 +228,14 @@
 				6D6782622BF211D100423201 /* Ranking.swift */,
 			);
 			path = JSONExport;
+			sourceTree = "<group>";
+		};
+		6D6BA0B12BFEEA8E00C3B906 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				6D6BA0B22BFEEAAF00C3B906 /* more_2_line.svg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		6DAFB3F42BFDA3450092F9BC /* Utils */ = {
@@ -361,7 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DFFF9362BFF374200B123AE /* more_2_line.svg in Resources */,
+				6D6BA0B32BFEEAAF00C3B906 /* more_2_line.svg in Resources */,
 				6D6781C32BEA268000423201 /* Assets.xcassets in Resources */,
 				6D6781C62BEA268000423201 /* Base in Resources */,
 				6D6781C12BEA268000423201 /* Base in Resources */,
@@ -588,7 +588,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TK49482D3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rakuten_ranking_app/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -616,7 +615,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TK49482D3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rakuten_ranking_app/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
