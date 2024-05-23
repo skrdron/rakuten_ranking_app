@@ -30,6 +30,9 @@
 		6D6782602BF2117400423201 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D67825F2BF2117400423201 /* RankingModel.swift */; };
 		6D6782632BF211D100423201 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6782622BF211D100423201 /* Ranking.swift */; };
 		6D6782672BF4A6CF00423201 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6782662BF4A6CF00423201 /* Constants.swift */; };
+		6D6BA0AE2BFED9B200C3B906 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6D6BA0AD2BFED9B200C3B906 /* SVGKit */; };
+		6D6BA0B02BFED9B200C3B906 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6D6BA0AF2BFED9B200C3B906 /* SVGKitSwift */; };
+		6D6BA0B32BFEEAAF00C3B906 /* more_2_line.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6D6BA0B22BFEEAAF00C3B906 /* more_2_line.svg */; };
 		6DAFB3ED2BF753E30092F9BC /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3EC2BF753E30092F9BC /* RankingTableViewCell.swift */; };
 		6DAFB3F12BFC69D30092F9BC /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */; };
 		6DAFB3F32BFC69E20092F9BC /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */; };
@@ -78,6 +81,7 @@
 		6D67825F2BF2117400423201 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
 		6D6782622BF211D100423201 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		6D6782662BF4A6CF00423201 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6D6BA0B22BFEEAAF00C3B906 /* more_2_line.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = more_2_line.svg; path = ../../../../../../Downloads/more_2_line.svg; sourceTree = "<group>"; };
 		6DAFB3EC2BF753E30092F9BC /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
 		6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6BA0B02BFED9B200C3B906 /* SVGKitSwift in Frameworks */,
+				6D6BA0AE2BFED9B200C3B906 /* SVGKit in Frameworks */,
 				6D6782592BF2109900423201 /* Alamofire in Frameworks */,
 				6D67825B2BF2109900423201 /* AlamofireDynamic in Frameworks */,
 			);
@@ -133,6 +139,7 @@
 		6D6781B82BEA268000423201 /* rakuten_ranking_app */ = {
 			isa = PBXGroup;
 			children = (
+				6D6BA0B12BFEEA8E00C3B906 /* svgImages */,
 				6DAFB3F42BFDA3450092F9BC /* Utils */,
 				6D6781EC2BEA2D0300423201 /* Controllers */,
 				6D6781EA2BEA2CAD00423201 /* Models */,
@@ -223,6 +230,14 @@
 			path = JSONExport;
 			sourceTree = "<group>";
 		};
+		6D6BA0B12BFEEA8E00C3B906 /* svgImages */ = {
+			isa = PBXGroup;
+			children = (
+				6D6BA0B22BFEEAAF00C3B906 /* more_2_line.svg */,
+			);
+			path = svgImages;
+			sourceTree = "<group>";
+		};
 		6DAFB3F42BFDA3450092F9BC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +266,8 @@
 			packageProductDependencies = (
 				6D6782582BF2109900423201 /* Alamofire */,
 				6D67825A2BF2109900423201 /* AlamofireDynamic */,
+				6D6BA0AD2BFED9B200C3B906 /* SVGKit */,
+				6D6BA0AF2BFED9B200C3B906 /* SVGKitSwift */,
 			);
 			productName = rakuten_ranking_app;
 			productReference = 6D6781B62BEA268000423201 /* rakuten_ranking_app.app */;
@@ -326,6 +343,7 @@
 			mainGroup = 6D6781AD2BEA268000423201;
 			packageReferences = (
 				6D6782572BF2109900423201 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				6D6BA0AC2BFED93D00C3B906 /* XCRemoteSwiftPackageReference "SVGKit" */,
 			);
 			productRefGroup = 6D6781B72BEA268000423201 /* Products */;
 			projectDirPath = "";
@@ -343,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6BA0B32BFEEAAF00C3B906 /* more_2_line.svg in Resources */,
 				6D6781C32BEA268000423201 /* Assets.xcassets in Resources */,
 				6D6781C62BEA268000423201 /* Base in Resources */,
 				6D6781C12BEA268000423201 /* Base in Resources */,
@@ -738,6 +757,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		6D6BA0AC2BFED93D00C3B906 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -750,6 +777,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6D6782572BF2109900423201 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
+		};
+		6D6BA0AD2BFED9B200C3B906 /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D6BA0AC2BFED93D00C3B906 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
+		};
+		6D6BA0AF2BFED9B200C3B906 /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D6BA0AC2BFED93D00C3B906 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

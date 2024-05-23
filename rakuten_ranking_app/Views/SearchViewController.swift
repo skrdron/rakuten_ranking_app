@@ -6,14 +6,59 @@
 //
 
 import UIKit
+import SVGKit
 
-class SearchViewController: UIViewController {
 
-    @IBOutlet weak var SearchBar: UISearchBar!
+class SearchViewController: UIViewController,UISearchBarDelegate  {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ellipsis: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearchBar()
+        addEllipsisButton()
+    }
 
+    ///searchBarをNavigationBarに設置する関数
+    func setupSearchBar() {
+        if let navigationBarFrame = navigationController?.navigationBar.bounds {
+            let searchBar = UISearchBar(frame: navigationBarFrame)
+            searchBar.delegate = self
+            searchBar.placeholder = "商品を検索"
+            searchBar.tintColor = UIColor.gray
+            searchBar.keyboardType = .default
+            navigationItem.titleView = searchBar
+            self.searchBar = searchBar
+        }
+     }
+    
+    ///SVGファイルを使用してNavigationBarにボタンを追加するための処理
+    func addEllipsisButton() {
+        guard let filePath = Bundle.main.path(forResource: "more_2_line", ofType: "svg") else {
+            print("SVG画像が見つからない")
+            return
+        }
+        // バックグラウンドスレッドでSVG画像のロードを実行
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let svgImage = SVGKImage(contentsOfFile: filePath)?.uiImage {
+                // メインスレッドでUI更新
+                DispatchQueue.main.async {
+                    // 読み込まれたSVG画像を用いてUIBarButtonItemオブジェクトを作成
+                    let ellipsisButton = UIBarButtonItem(image: svgImage, style: .plain, target: self, action: #selector(self.ellipsisButtonTapped))
+                    self.navigationItem.rightBarButtonItem = ellipsisButton
+                    print("SVG画像のロードに成功")
+                }
+            } else {
+                DispatchQueue.main.async {
+                    print("SVG画像のロードに失敗")
+                }
+            }
+        }
+    }
+
+    
+    @objc func ellipsisButtonTapped() {
+        print("elliipsがタップされました")
     }
 }

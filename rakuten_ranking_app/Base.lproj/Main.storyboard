@@ -22,7 +22,6 @@
                                     <segue destination="QZd-Cr-zFz" kind="embed" id="G9C-nq-pA4"/>
                                 </connections>
                             </containerView>
-
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R74-fg-Gdt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -591,21 +590,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="636"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KOF-A5-e0Z">
-                                <rect key="frame" x="16" y="11" width="326" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="QZd-Cr-zFz" id="4Bb-0O-2ad"/>
-                                </connections>
-                            </searchBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ellipsis" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="srJ-EB-pRb">
-                                <rect key="frame" x="358" y="34.666666666666664" width="19" height="5.3333333333333357"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gzB-tx-gHm">
-                                <rect key="frame" x="0.0" y="67" width="393" height="535"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="543"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="139" id="LhV-Z0-9YK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="139" id="LhV-Z0-9YK">
                                         <rect key="frame" x="0.0" y="50" width="393" height="139"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LhV-Z0-9YK" id="5zY-2j-P40">
@@ -679,22 +668,14 @@
                         <viewLayoutGuide key="safeArea" id="Sib-kk-b0p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="KOF-A5-e0Z" firstAttribute="top" secondItem="f24-Ty-sLP" secondAttribute="top" constant="11" id="620-mU-icC"/>
-                            <constraint firstItem="srJ-EB-pRb" firstAttribute="top" secondItem="f24-Ty-sLP" secondAttribute="top" constant="27" id="DVS-xl-Ng1"/>
-                            <constraint firstItem="srJ-EB-pRb" firstAttribute="leading" secondItem="KOF-A5-e0Z" secondAttribute="trailing" constant="16" id="Fea-bz-ldp"/>
-                            <constraint firstItem="gzB-tx-gHm" firstAttribute="top" secondItem="KOF-A5-e0Z" secondAttribute="bottom" id="Hsk-h4-ayZ"/>
                             <constraint firstItem="gzB-tx-gHm" firstAttribute="leading" secondItem="Sib-kk-b0p" secondAttribute="leading" id="L2P-h7-m2A"/>
                             <constraint firstItem="Sib-kk-b0p" firstAttribute="trailing" secondItem="gzB-tx-gHm" secondAttribute="trailing" id="QPs-zW-DY5"/>
                             <constraint firstItem="gzB-tx-gHm" firstAttribute="trailing" secondItem="Sib-kk-b0p" secondAttribute="trailing" id="UUK-Yq-6Ow"/>
                             <constraint firstItem="Sib-kk-b0p" firstAttribute="bottom" secondItem="gzB-tx-gHm" secondAttribute="bottom" id="jks-yj-p7F"/>
                             <constraint firstItem="gzB-tx-gHm" firstAttribute="leading" secondItem="Sib-kk-b0p" secondAttribute="leading" id="jyf-yA-IMO"/>
-                            <constraint firstItem="KOF-A5-e0Z" firstAttribute="leading" secondItem="f24-Ty-sLP" secondAttribute="leading" constant="16" id="msF-CC-3Wa"/>
-                            <constraint firstAttribute="trailing" secondItem="srJ-EB-pRb" secondAttribute="trailing" constant="16" id="vze-AF-w9K"/>
+                            <constraint firstItem="gzB-tx-gHm" firstAttribute="top" secondItem="Sib-kk-b0p" secondAttribute="top" id="lhV-ih-gWr"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="SearchBar" destination="KOF-A5-e0Z" id="H8D-oL-iag"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbI-OF-t4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -703,7 +684,6 @@
     </scenes>
     <resources>
         <image name="bookmark.fill" catalog="system" width="110" height="128"/>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
