@@ -139,7 +139,7 @@
 		6D6781B82BEA268000423201 /* rakuten_ranking_app */ = {
 			isa = PBXGroup;
 			children = (
-				6D6BA0B12BFEEA8E00C3B906 /* svgImages */,
+				6D6BA0B12BFEEA8E00C3B906 /* Images */,
 				6DAFB3F42BFDA3450092F9BC /* Utils */,
 				6D6781EC2BEA2D0300423201 /* Controllers */,
 				6D6781EA2BEA2CAD00423201 /* Models */,
@@ -230,12 +230,12 @@
 			path = JSONExport;
 			sourceTree = "<group>";
 		};
-		6D6BA0B12BFEEA8E00C3B906 /* svgImages */ = {
+		6D6BA0B12BFEEA8E00C3B906 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				6D6BA0B22BFEEAAF00C3B906 /* more_2_line.svg */,
 			);
-			path = svgImages;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		6DAFB3F42BFDA3450092F9BC /* Utils */ = {
