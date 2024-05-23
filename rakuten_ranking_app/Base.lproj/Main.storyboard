@@ -582,10 +582,10 @@
             </objects>
             <point key="canvasLocation" x="13307.633587786258" y="-2204.2253521126763"/>
         </scene>
-        <!--Search View Controller-->
+        <!--View Controller-->
         <scene sceneID="om7-Ge-coI">
             <objects>
-                <viewController id="QZd-Cr-zFz" customClass="SearchViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QZd-Cr-zFz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f24-Ty-sLP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="636"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
