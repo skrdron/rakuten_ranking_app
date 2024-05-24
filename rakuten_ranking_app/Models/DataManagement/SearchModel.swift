@@ -11,16 +11,19 @@ class SearchModel {
     let notificationCenter = NotificationCenter.default
     
     //取得したSearchデータを保持
-    private(set) var search: Search! {
+    private(set) var search: Search? {
         didSet {
-            //searchプロパティが新しいデータで更新されると、通知を送信
-            notificationCenter.post(
-                name: .init(rawValue: NotificationConst.searchNotificationName),
-                object: nil,
-                userInfo: [
-                    NotificationConst.UserInfoKeysForSearch.search: search!,
-                ]
-            )
+            //search プロパティが nil でないかをチェック
+            if let validSearch = search {
+                let userInfo = [NotificationConst.UserInfoKeysForSearch.search: validSearch]
+                         
+                // 通知を送信
+                notificationCenter.post(
+                    name: .init(rawValue: NotificationConst.searchNotificationName),
+                    object: nil,
+                    userInfo: userInfo
+                )
+            }
         }
     }
 }
