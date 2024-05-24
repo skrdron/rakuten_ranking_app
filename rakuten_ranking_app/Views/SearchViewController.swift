@@ -43,7 +43,7 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
             return
         }
         //ライブラリのバグで、最初一回のSVG読み込みに失敗してしまうのを回避するためのコード
-        SVGKImage(contentsOfFile: filePath)?.uiImage
+        _ = SVGKImage(contentsOfFile: filePath)?.uiImage
         let svgImage = SVGKImage(contentsOfFile: filePath)?.uiImage
         let ellipsisButton = UIBarButtonItem(image: svgImage, style: .plain, target: self, action: #selector(self.ellipsisButtonTapped))
         self.navigationItem.rightBarButtonItem = ellipsisButton
