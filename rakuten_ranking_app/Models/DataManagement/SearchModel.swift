@@ -23,4 +23,9 @@ class SearchModel {
             )
         }
     }
+    
+    // 検索データをセットする
+    func setSearchData(_ data: Search) {
+        self.search = data
+    }
 }
