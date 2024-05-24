@@ -14,7 +14,7 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var rankingLabel: UILabel!
     
-    func configure(with item: RankingItem, at indexPath: IndexPath, in tableView: UITableView) {
+    func configure(with item: Item, at indexPath: IndexPath, in tableView: UITableView) {
         rankingLabel.text = "\(item.rank)"
         productNameLabel.text = item.itemName
         priceLabel.text = PriceFormatter.formatPrice(item.itemPrice)

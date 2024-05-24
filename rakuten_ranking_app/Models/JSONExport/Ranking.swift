@@ -9,7 +9,7 @@
 import Foundation
 
 struct Ranking: Codable {
-    var items: [RankingItemElement]
+    var items: [ItemElement]
 
     enum CodingKeys: String, CodingKey {
         case items = "Items"
@@ -17,19 +17,19 @@ struct Ranking: Codable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        items = try container.decodeIfPresent([RankingItemElement].self, forKey: .items) ?? []
+        items = try container.decodeIfPresent([ItemElement].self, forKey: .items) ?? []
     }
 }
 
-struct RankingItemElement: Codable {
-    let item: RankingItem
+struct ItemElement: Codable {
+    let item: Item
 
     enum CodingKeys: String, CodingKey {
         case item = "Item"
     }
 }
 
-struct RankingItem: Codable {
+struct Item: Codable {
     let affiliateRate, affiliateURL, asurakuArea, asurakuClosingTime: String
     let asurakuFlag, availability, carrier: Int
     let catchcopy: String
@@ -40,7 +40,7 @@ struct RankingItem: Codable {
     let itemPriceBaseField, itemPriceMax1, itemPriceMax2, itemPriceMax3: String
     let itemPriceMin1, itemPriceMin2, itemPriceMin3: String
     let itemURL: String
-    let mediumImageUrls: [RankingImageURL]
+    let mediumImageUrls: [ImageURL]
     let pointRate: Int
     let pointRateEndTime, pointRateStartTime: String
     let postageFlag, rank: Int
@@ -51,7 +51,7 @@ struct RankingItem: Codable {
     let shopAffiliateURL, shopCode, shopName: String
     let shopOfTheYearFlag: Int
     let shopURL: String
-    let smallImageUrls: [RankingImageURL]
+    let smallImageUrls: [ImageURL]
     let startTime: String
     let taxFlag: Int
 
@@ -96,7 +96,7 @@ struct RankingItem: Codable {
            itemPriceMin2 = try container.decodeIfPresent(String.self, forKey: .itemPriceMin2) ?? ""
            itemPriceMin3 = try container.decodeIfPresent(String.self, forKey: .itemPriceMin3) ?? ""
            itemURL = try container.decodeIfPresent(String.self, forKey: .itemURL) ?? ""
-           mediumImageUrls = try container.decodeIfPresent([RankingImageURL].self, forKey: .mediumImageUrls) ?? []
+           mediumImageUrls = try container.decodeIfPresent([ImageURL].self, forKey: .mediumImageUrls) ?? []
            pointRate = try container.decodeIfPresent(Int.self, forKey: .pointRate) ?? 0
            pointRateEndTime = try container.decodeIfPresent(String.self, forKey: .pointRateEndTime) ?? ""
            pointRateStartTime = try container.decodeIfPresent(String.self, forKey: .pointRateStartTime) ?? ""
@@ -111,13 +111,13 @@ struct RankingItem: Codable {
            shopName = try container.decodeIfPresent(String.self, forKey: .shopName) ?? ""
            shopOfTheYearFlag = try container.decodeIfPresent(Int.self, forKey: .shopOfTheYearFlag) ?? 0
            shopURL = try container.decodeIfPresent(String.self, forKey: .shopURL) ?? ""
-           smallImageUrls = try container.decodeIfPresent([RankingImageURL].self, forKey: .smallImageUrls) ?? []
+           smallImageUrls = try container.decodeIfPresent([ImageURL].self, forKey: .smallImageUrls) ?? []
            startTime = try container.decodeIfPresent(String.self, forKey: .startTime) ?? ""
            taxFlag = try container.decodeIfPresent(Int.self, forKey: .taxFlag) ?? 0
     }
 }
 
-struct RankingImageURL: Codable {
+struct ImageURL: Codable {
     let imageURL: String
 
     enum CodingKeys: String, CodingKey {

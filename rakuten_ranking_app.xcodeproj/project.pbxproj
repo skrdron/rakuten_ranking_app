@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6D5245562BFF3E4F0045289D /* more_2_line.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5245552BFF3E4F0045289D /* more_2_line.svg */; };
-		6D5245582C00250A0045289D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5245572C00250A0045289D /* Search.swift */; };
-		6D52455B2C00266F0045289D /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D52455A2C00266F0045289D /* SearchModel.swift */; };
-		6D52455D2C0027C90045289D /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D52455C2C0027C90045289D /* SearchAPI.swift */; };
 		6D6781BA2BEA268000423201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6781B92BEA268000423201 /* AppDelegate.swift */; };
 		6D6781BC2BEA268000423201 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6781BB2BEA268000423201 /* SceneDelegate.swift */; };
 		6D6781C12BEA268000423201 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6D6781C02BEA268000423201 /* Base */; };
@@ -60,9 +57,6 @@
 
 /* Begin PBXFileReference section */
 		6D5245552BFF3E4F0045289D /* more_2_line.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = more_2_line.svg; sourceTree = "<group>"; };
-		6D5245572C00250A0045289D /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
-		6D52455A2C00266F0045289D /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
-		6D52455C2C0027C90045289D /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		6D6781B62BEA268000423201 /* rakuten_ranking_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rakuten_ranking_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6781B92BEA268000423201 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D6781BB2BEA268000423201 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				6D6782612BF211B400423201 /* JSONExport */,
-				6D67825E2BF2116200423201 /* DataManager */,
+				6D67825E2BF2116200423201 /* Ranking */,
 				6D6782542BF2100C00423201 /* API */,
 			);
 			path = Models;
@@ -224,24 +218,21 @@
 			children = (
 				6D6782552BF2107000423201 /* APIClient.swift */,
 				6D67825C2BF2111100423201 /* RankingAPI.swift */,
-				6D52455C2C0027C90045289D /* SearchAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
 		};
-		6D67825E2BF2116200423201 /* DataManager */ = {
+		6D67825E2BF2116200423201 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
-				6D52455A2C00266F0045289D /* SearchModel.swift */,
 				6D67825F2BF2117400423201 /* RankingModel.swift */,
 			);
-			path = DataManager;
+			path = Ranking;
 			sourceTree = "<group>";
 		};
 		6D6782612BF211B400423201 /* JSONExport */ = {
 			isa = PBXGroup;
 			children = (
-				6D5245572C00250A0045289D /* Search.swift */,
 				6D6782622BF211D100423201 /* Ranking.swift */,
 			);
 			path = JSONExport;
@@ -401,18 +392,15 @@
 				6D67820D2BEB291700423201 /* BookmarkViewController.swift in Sources */,
 				6D67820B2BEB290900423201 /* SearchViewController.swift in Sources */,
 				6DAFB3ED2BF753E30092F9BC /* RankingTableViewCell.swift in Sources */,
-				6D52455B2C00266F0045289D /* SearchModel.swift in Sources */,
 				6DAFB3F32BFC69E20092F9BC /* ImageFetcher.swift in Sources */,
 				6D6782092BEB28FC00423201 /* RankingViewController.swift in Sources */,
 				6D67820F2BEB2C3D00423201 /* TabBarController.swift in Sources */,
 				6D6782602BF2117400423201 /* RankingModel.swift in Sources */,
-				6D52455D2C0027C90045289D /* SearchAPI.swift in Sources */,
 				6D6781BA2BEA268000423201 /* AppDelegate.swift in Sources */,
 				6D6782562BF2107000423201 /* APIClient.swift in Sources */,
 				6DAFB3F12BFC69D30092F9BC /* PriceFormatter.swift in Sources */,
 				6D6782672BF4A6CF00423201 /* Constants.swift in Sources */,
 				6D6782132BEC69DB00423201 /* RankingForAllViewController.swift in Sources */,
-				6D5245582C00250A0045289D /* Search.swift in Sources */,
 				6D6781BC2BEA268000423201 /* SceneDelegate.swift in Sources */,
 				6D6782172BEC6A0900423201 /* RankingForFemaleViewController.swift in Sources */,
 				6D6782632BF211D100423201 /* Ranking.swift in Sources */,
