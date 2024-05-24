@@ -14,9 +14,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ellipsis: UIImageView!
     
-    // 最初のロードを追跡するためのフラグ
-    static var isFirstLoad = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
@@ -50,7 +47,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
     }
 
 
-    
     @objc func ellipsisButtonTapped() {
         print("elliipsがタップされました")
     }
