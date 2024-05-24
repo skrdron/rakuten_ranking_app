@@ -16,7 +16,7 @@ class RankingForFemaleViewController: UIViewController {
       }
     }
     
-    private var items: [ItemElement] = []
+    private var items: [RankingItemElement] = []
     
     deinit {
       model.notificationCenter.removeObserver(self)
