@@ -14,6 +14,9 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ellipsis: UIImageView!
     
+    // 最初のロードを追跡するためのフラグ
+    static var isFirstLoad = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
@@ -39,23 +42,13 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
             print("SVG画像が見つからない")
             return
         }
-        // バックグラウンドスレッドでSVG画像のロードを実行
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let svgImage = SVGKImage(contentsOfFile: filePath)?.uiImage {
-                // メインスレッドでUI更新
-                DispatchQueue.main.async {
-                    // 読み込まれたSVG画像を用いてUIBarButtonItemオブジェクトを作成
-                    let ellipsisButton = UIBarButtonItem(image: svgImage, style: .plain, target: self, action: #selector(self.ellipsisButtonTapped))
-                    self.navigationItem.rightBarButtonItem = ellipsisButton
-                    print("SVG画像のロードに成功")
-                }
-            } else {
-                DispatchQueue.main.async {
-                    print("SVG画像のロードに失敗")
-                }
-            }
-        }
+        //ライブラリのバグで、最初一回のSVG読み込みに失敗してしまうのを回避するためのコード
+        SVGKImage(contentsOfFile: filePath)?.uiImage
+        let svgImage = SVGKImage(contentsOfFile: filePath)?.uiImage
+        let ellipsisButton = UIBarButtonItem(image: svgImage, style: .plain, target: self, action: #selector(self.ellipsisButtonTapped))
+        self.navigationItem.rightBarButtonItem = ellipsisButton
     }
+
 
     
     @objc func ellipsisButtonTapped() {
