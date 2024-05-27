@@ -18,8 +18,8 @@ class RankingModel {
                 name: .init(rawValue: NotificationConst.rankingNotificationName),
                 object: nil,
                 userInfo: [
-                    NotificationConst.UserInfoKeys.ranking: ranking!,
-                    NotificationConst.UserInfoKeys.sexType: sex
+                    NotificationConst.UserInfoKeysForRanking.ranking: ranking!,
+                    NotificationConst.UserInfoKeysForRanking.sexType: sex
                 ]
             )
         }
