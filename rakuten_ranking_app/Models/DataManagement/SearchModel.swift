@@ -13,17 +13,17 @@ class SearchModel {
     //取得したSearchデータを保持
     private(set) var search: Search? {
         didSet {
-            //search プロパティが nil でないかをチェック
+            //通知に用いる追加情報を格納するための空のuserInfo辞書を初期化
+            var userInfo: [String: Any] = [:]
+            //searchプロパティがnilでないかをチェック
             if let validSearch = search {
-                let userInfo = [NotificationConst.UserInfoKeysForSearch.search: validSearch]
-                         
-                // 通知を送信
-                notificationCenter.post(
-                    name: .init(rawValue: NotificationConst.searchNotificationName),
-                    object: nil,
-                    userInfo: userInfo
-                )
+                userInfo[NotificationConst.UserInfoKeysForSearch.search] = validSearch
             }
+            notificationCenter.post(
+                name: .init(rawValue: NotificationConst.searchNotificationName),
+                object: nil,
+                userInfo: userInfo.isEmpty ? nil : userInfo
+            )
         }
     }
 }
