@@ -26,4 +26,9 @@ class SearchModel {
             )
         }
     }
+    
+    //検索バーで取得した文字をSearchedItemsViewControllerから受け取る
+    func fetchSearchResults(with searchText: String) {
+        print("次の検索文字列をモデルで受け取った: \(searchText)")
+    }
 }
