@@ -11,9 +11,15 @@ class SearchedItemsViewController: UIViewController, UISearchBarDelegate {
     
     // 検索文字列を保持するプロパティ
     var searchString: String?
-    var searchModel = SearchModel()
+    var searchModel: SearchModel?
     
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // APIClientの実装に基づいて初期化
+        self.searchModel = SearchModel(apiClient: DefaultAPIClient.shared)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupSearchBarDelegate()
@@ -33,6 +39,6 @@ class SearchedItemsViewController: UIViewController, UISearchBarDelegate {
             return
         }
         print("検索バーに入力された文字: \(searchText)")
-        searchModel.fetchSearchResults(with: searchText)
+        searchModel?.fetchSearchResults(with: searchText)
     }
 }

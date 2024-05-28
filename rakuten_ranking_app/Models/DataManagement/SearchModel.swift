@@ -27,8 +27,22 @@ class SearchModel {
         }
     }
     
-    //検索バーで取得した文字をSearchedItemsViewControllerから受け取る
+    private let searchAPI: SearchAPI
+    
+    // APIインスタンスを初期化
+    init(apiClient: APIClient) {
+        self.searchAPI = SearchAPI(apiClient: apiClient)
+    }
+    
+    ///検索バーで取得した文字をSearchedItemsViewControllerから受け取る
     func fetchSearchResults(with searchText: String) {
         print("次の検索文字列をモデルで受け取った: \(searchText)")
+        searchAPI.requestSearch(keyword: searchText) { [weak self] result in
+            DispatchQueue.main.async {
+                if case .success(let search) = result {
+                  self?.search = search
+                }
+            }
+        }
     }
 }
