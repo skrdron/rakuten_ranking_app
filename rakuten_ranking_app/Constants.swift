@@ -14,6 +14,7 @@ struct NetworkConst {
 
 struct APIPathConst {
     static let rankingAPIUrlPath = "IchibaItem/Ranking/20220601"
+    static let searchAPIUrlPath = "IchibaItem/Search/20220601"
 }
 
 struct NotificationConst {
