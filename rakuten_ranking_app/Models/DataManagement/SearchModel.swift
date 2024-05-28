@@ -9,6 +9,7 @@ import Foundation
 
 class SearchModel {
     let notificationCenter = NotificationCenter.default
+    private let apiClient: APIClient
     
     //取得したSearchデータを保持
     private(set) var search: Search? {
@@ -27,8 +28,26 @@ class SearchModel {
         }
     }
     
+    init(apiClient: APIClient) {
+       self.apiClient = apiClient
+    }
+    
     //検索バーで取得した文字をSearchedItemsViewControllerから受け取る
     func fetchSearchResults(with searchText: String) {
         print("次の検索文字列をモデルで受け取った: \(searchText)")
+        // SearchAPIを使って検索を行う
+        let searchAPI = SearchAPI(apiClient: apiClient)
+        searchAPI.requestSearch(keyword: searchText) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let searchResults):
+                    self?.search = searchResults
+                    print("検索結果を取得しました。")
+                case .failure(let error):
+                    print("検索に失敗しました: \(error)")
+                    self?.search = nil
+                }
+            }
+        }
     }
 }
