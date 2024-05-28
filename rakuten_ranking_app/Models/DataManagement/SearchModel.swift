@@ -19,12 +19,15 @@ class SearchModel {
             //searchプロパティがnilでないかをチェック
             if let validSearch = search {
                 userInfo[NotificationConst.UserInfoKeysForSearch.search] = validSearch
+                notificationCenter.post(
+                    name: .init(rawValue: NotificationConst.searchNotificationName),
+                    object: nil,
+                    userInfo: userInfo.isEmpty ? nil : userInfo
+                )
+                       
+                // 検索結果の最初の30件をコンソールに表示
+                printSearchResults(validSearch)
             }
-            notificationCenter.post(
-                name: .init(rawValue: NotificationConst.searchNotificationName),
-                object: nil,
-                userInfo: userInfo.isEmpty ? nil : userInfo
-            )
         }
     }
     
@@ -39,15 +42,20 @@ class SearchModel {
         let searchAPI = SearchAPI(apiClient: apiClient)
         searchAPI.requestSearch(keyword: searchText) { [weak self] result in
             DispatchQueue.main.async {
-                switch result {
-                case .success(let searchResults):
-                    self?.search = searchResults
-                    print("検索結果を取得しました。")
-                case .failure(let error):
-                    print("検索に失敗しました: \(error)")
-                    self?.search = nil
+                if case .success(let search) = result {
+                   self?.search = search
                 }
             }
         }
     }
+    
+    //検索結果をコンソールに表示するメソッド (30件)
+    private func printSearchResults(_ search: Search) {
+          let items = search.items.prefix(30)
+          for item in items {
+              let name = item.item.itemName
+              let price = item.item.itemPrice
+              print("商品名: \(name), 価格: \(price)")
+          }
+      }
 }

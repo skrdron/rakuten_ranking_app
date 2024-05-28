@@ -7,21 +7,21 @@
 
 import UIKit
 
-class SearchedItemsViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+class SearchedItemsViewController: UIViewController, UISearchBarDelegate {
     
     // 検索文字列を保持するプロパティ
     var searchString: String?
-    var searchModel = SearchModel()
-    var tableView: UITableView!
+    var searchModel = SearchModel(apiClient: DefaultAPIClient.shared)
+    @IBOutlet weak var tableView: UITableView!
+    
+    private var items: [SearchItemElement] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupSearchBarDelegate()
     }
     
     ///親VC(SearchViewController)の取得
@@ -41,24 +41,4 @@ class SearchedItemsViewController: UIViewController, UISearchBarDelegate, UITabl
         searchModel.fetchSearchResults(with: searchText)
     }
     
-    private func setupTableView() {
-        tableView = UITableView(frame: view.bounds, style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
-        view.addSubview(tableView)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchModel.search?.items.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchTableViewCell,
-              let item = searchModel.search?.items[indexPath.row].item else {
-            return UITableViewCell()
-        }
-        cell.configure(with: item, at: indexPath, in: tableView)
-        return cell
-    }
 }

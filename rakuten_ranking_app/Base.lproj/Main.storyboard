@@ -682,6 +682,9 @@
                             <constraint firstItem="gzB-tx-gHm" firstAttribute="top" secondItem="Sib-kk-b0p" secondAttribute="top" id="lhV-ih-gWr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="gzB-tx-gHm" id="8OL-JO-SoB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbI-OF-t4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
