@@ -24,9 +24,6 @@ class SearchModel {
                     object: nil,
                     userInfo: userInfo.isEmpty ? nil : userInfo
                 )
-                       
-                // 検索結果の最初の30件をコンソールに表示
-                printSearchResults(validSearch)
             }
         }
     }
@@ -37,7 +34,6 @@ class SearchModel {
     
     //検索バーで取得した文字をSearchedItemsViewControllerから受け取る
     func fetchSearchResults(with searchText: String) {
-        print("次の検索文字列をモデルで受け取った: \(searchText)")
         // SearchAPIを使って検索を行う
         let searchAPI = SearchAPI(apiClient: apiClient)
         searchAPI.requestSearch(keyword: searchText) { [weak self] result in
@@ -48,14 +44,4 @@ class SearchModel {
             }
         }
     }
-    
-    //検索結果をコンソールに表示するメソッド (30件)
-    private func printSearchResults(_ search: Search) {
-          let items = search.items.prefix(30)
-          for item in items {
-              let name = item.item.itemName
-              let price = item.item.itemPrice
-              print("商品名: \(name), 価格: \(price)")
-          }
-      }
 }
