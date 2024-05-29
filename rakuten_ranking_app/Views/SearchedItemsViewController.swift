@@ -20,19 +20,14 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var items: [SearchItemElement] = []
-    
     deinit {
         model?.notificationCenter.removeObserver(self)
     }
     
     private func registerModel() {
-        _ = model?.notificationCenter.addObserver(forName: .init(rawValue: NotificationConst.searchNotificationName),
-                                                  object: nil, queue: nil) { [weak self] notification in
-            if let search = notification.userInfo?[NotificationConst.UserInfoKeysForSearch.search] as? Search {
-                self?.items = search.items
-                self?.tableView.reloadData()
-            }
+        model?.notificationCenter.addObserver(forName: .init(rawValue: NotificationConst.searchNotificationName),
+                                                object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.tableView.reloadData()
         }
     }
     
@@ -70,14 +65,16 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
 
 extension SearchedItemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return model?.search?.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
-        let item = items[indexPath.row].item
+        guard let item = model?.search?.items[indexPath.row] else {
+            fatalError("データを取得できませんでした。")
+        }
         
-        cell.configure(with: item, at: indexPath, in: tableView)
+        cell.configure(with: item.item, at: indexPath, in: tableView)
         
         return cell
     }
