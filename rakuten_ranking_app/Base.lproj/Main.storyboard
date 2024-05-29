@@ -604,7 +604,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lv0-ex-xNW" userLabel="ViewForSpacing">
                                                     <rect key="frame" x="16" y="8" width="361" height="126"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cHb-mU-k3b">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cHb-mU-k3b" userLabel="Product Image View">
                                                             <rect key="frame" x="10" y="31" width="64" height="64"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="64" id="27e-I8-fta"/>
@@ -640,12 +640,12 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
-                                                        <constraint firstItem="cHb-mU-k3b" firstAttribute="centerY" secondItem="lv0-ex-xNW" secondAttribute="centerY" id="4A4-ul-Xoi"/>
                                                         <constraint firstItem="Onh-EQ-W0T" firstAttribute="top" secondItem="lv0-ex-xNW" secondAttribute="top" constant="16" id="7ac-F6-ARK"/>
                                                         <constraint firstItem="cHb-mU-k3b" firstAttribute="leading" secondItem="lv0-ex-xNW" secondAttribute="leading" constant="10" id="C5k-7U-kl9"/>
                                                         <constraint firstItem="0K9-ZN-InN" firstAttribute="top" secondItem="Onh-EQ-W0T" secondAttribute="bottom" id="K5c-d4-odP"/>
                                                         <constraint firstItem="kF7-3x-w26" firstAttribute="leading" secondItem="0K9-ZN-InN" secondAttribute="trailing" constant="6" id="RaC-Ka-E2F"/>
                                                         <constraint firstItem="0K9-ZN-InN" firstAttribute="leading" secondItem="cHb-mU-k3b" secondAttribute="trailing" constant="8" id="UcV-gb-qzK"/>
+                                                        <constraint firstItem="cHb-mU-k3b" firstAttribute="centerY" secondItem="lv0-ex-xNW" secondAttribute="centerY" id="d4X-So-fVV"/>
                                                         <constraint firstItem="Onh-EQ-W0T" firstAttribute="leading" secondItem="cHb-mU-k3b" secondAttribute="trailing" constant="8" id="kYB-x0-7iS"/>
                                                         <constraint firstItem="kF7-3x-w26" firstAttribute="centerY" secondItem="lv0-ex-xNW" secondAttribute="centerY" id="mx7-EU-W64"/>
                                                         <constraint firstAttribute="bottom" secondItem="0K9-ZN-InN" secondAttribute="bottom" constant="16" id="o6Q-29-Srq"/>
@@ -663,7 +663,6 @@
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="SearchCell"/>
                                         <connections>
-                                            <outlet property="imageView" destination="cHb-mU-k3b" id="c4C-up-6ZT"/>
                                             <outlet property="priceLabel" destination="0K9-ZN-InN" id="IMh-rZ-OR6"/>
                                             <outlet property="productImageView" destination="cHb-mU-k3b" id="ajh-Gm-y9P"/>
                                             <outlet property="productNameLabel" destination="Onh-EQ-W0T" id="ZfO-JJ-1Gd"/>
