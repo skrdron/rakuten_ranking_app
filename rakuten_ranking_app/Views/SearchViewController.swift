@@ -19,8 +19,8 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
         setupSearchBar()
         addEllipsisButton()
     }
-
-    ///searchBarをNavigationBarに設置する関数
+    
+    /// searchBarをNavigationBarに設置する関数
     func setupSearchBar() {
         if let navigationBarFrame = navigationController?.navigationBar.bounds {
             let searchBar = UISearchBar(frame: navigationBarFrame)
@@ -31,22 +31,22 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
             navigationItem.titleView = searchBar
             self.searchBar = searchBar
         }
-     }
+    }
     
-    ///SVGファイルを使用してNavigationBarにボタンを追加するための処理
+    /// SVGファイルを使用してNavigationBarにボタンを追加するための処理
     func addEllipsisButton() {
         guard let filePath = Bundle.main.path(forResource: "more_2_line", ofType: "svg") else {
             print("SVG画像が見つからない")
             return
         }
-        //ライブラリのバグで、最初一回のSVG読み込みに失敗してしまうのを回避するためのコード
+        // ライブラリのバグで、最初一回のSVG読み込みに失敗してしまうのを回避するためのコード
         _ = SVGKImage(contentsOfFile: filePath)?.uiImage
         let svgImage = SVGKImage(contentsOfFile: filePath)?.uiImage
         let ellipsisButton = UIBarButtonItem(image: svgImage, style: .plain, target: self, action: #selector(self.ellipsisButtonTapped))
         self.navigationItem.rightBarButtonItem = ellipsisButton
     }
-
-
+    
+    
     @objc func ellipsisButtonTapped() {
         print("elliipsがタップされました")
     }

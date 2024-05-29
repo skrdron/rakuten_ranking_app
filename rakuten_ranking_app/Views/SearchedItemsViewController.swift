@@ -13,9 +13,9 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
     var searchString: String?
     
     var model: SearchModel?{
-      didSet {
-        registerModel()
-      }
+        didSet {
+            registerModel()
+        }
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,12 +23,12 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
     private var items: [SearchItemElement] = []
     
     deinit {
-      model?.notificationCenter.removeObserver(self)
+        model?.notificationCenter.removeObserver(self)
     }
     
     private func registerModel() {
         _ = model?.notificationCenter.addObserver(forName: .init(rawValue: NotificationConst.searchNotificationName),
-                                              object: nil, queue: nil) { [weak self] notification in
+                                                  object: nil, queue: nil) { [weak self] notification in
             if let search = notification.userInfo?[NotificationConst.UserInfoKeysForSearch.search] as? Search {
                 self?.items = search.items
                 self?.tableView.reloadData()
@@ -38,7 +38,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -51,7 +51,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         setupSearchBarDelegate()
     }
     
-    ///親VC(SearchViewController)の取得
+    /// 親VC(SearchViewController)の取得
     private func setupSearchBarDelegate() {
         // 親のViewControllerから検索バーを参照し、delegateとして自分を設定
         if let parentVC = self.parent as? SearchViewController {
@@ -59,7 +59,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         }
     }
     
-    ///SearchBarに入力された文字を取得しモデルに渡す処理
+    /// SearchBarに入力された文字を取得しモデルに渡す処理
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {
             return

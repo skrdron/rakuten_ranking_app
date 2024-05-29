@@ -18,11 +18,11 @@ class SearchTableViewCell: UITableViewCell {
         productImageView.image = nil
         
         if let urlString = item.mediumImageUrls.first?.imageUrl {
-          ImageFetcher.fetchImage(from: urlString) { [weak self] image in
-              DispatchQueue.main.async {
-                 self?.productImageView.image = image
-              }
-          }
+            ImageFetcher.fetchImage(from: urlString) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.productImageView.image = image
+                }
+            }
         }
     }
 }

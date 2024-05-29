@@ -587,11 +587,11 @@
             <objects>
                 <viewController id="QZd-Cr-zFz" customClass="SearchedItemsViewController" customModule="rakuten_ranking_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f24-Ty-sLP">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="636"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gzB-tx-gHm">
-                                <rect key="frame" x="0.0" y="59" width="393" height="543"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="142" id="LhV-Z0-9YK" customClass="SearchTableViewCell" customModule="rakuten_ranking_app" customModuleProvider="target">
@@ -619,8 +619,8 @@
                                                                 <constraint firstAttribute="height" constant="21.329999999999998" id="gS6-71-WLa"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labjbjbjhvjvkjuyycyuyucyvycyucycyucyucyucyycycycyelvhvhvyhvyvyvyvyvy" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onh-EQ-W0T" userLabel="Product Name Label">
-                                                            <rect key="frame" x="82" y="16" width="243" height="46"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ラベルが長文だった場合、二行に折り返しをしさらに余った部分は...で省略されます" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onh-EQ-W0T" userLabel="Product Name Label">
+                                                            <rect key="frame" x="82" y="16" width="240" height="46"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="46" id="SK6-BM-qha"/>
                                                             </constraints>

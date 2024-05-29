@@ -11,12 +11,12 @@ class SearchModel {
     let notificationCenter = NotificationCenter.default
     private let apiClient: APIClient
     
-    //取得したSearchデータを保持
+    // 取得したSearchデータを保持
     private(set) var search: Search? {
         didSet {
-            //通知に用いる追加情報を格納するための空のuserInfo辞書を初期化
+            // 通知に用いる追加情報を格納するための空のuserInfo辞書を初期化
             var userInfo: [String: Any] = [:]
-            //searchプロパティがnilでないかをチェック
+            // searchプロパティがnilでないかをチェック
             if let validSearch = search {
                 userInfo[NotificationConst.UserInfoKeysForSearch.search] = validSearch
                 notificationCenter.post(
@@ -29,17 +29,17 @@ class SearchModel {
     }
     
     init(apiClient: APIClient) {
-       self.apiClient = apiClient
+        self.apiClient = apiClient
     }
     
-    //検索バーで取得した文字をSearchedItemsViewControllerから受け取る
+    /// 検索バーで取得した文字をSearchedItemsViewControllerから受け取る
     func fetchSearchResults(with searchText: String) {
         // SearchAPIを使って検索を行う
         let searchAPI = SearchAPI(apiClient: apiClient)
         searchAPI.requestSearch(keyword: searchText) { [weak self] result in
             DispatchQueue.main.async {
                 if case .success(let search) = result {
-                   self?.search = search
+                    self?.search = search
                 }
             }
         }
