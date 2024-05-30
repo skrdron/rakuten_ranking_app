@@ -673,6 +673,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sib-kk-b0p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="gzB-tx-gHm" firstAttribute="leading" secondItem="Sib-kk-b0p" secondAttribute="leading" id="L2P-h7-m2A"/>
                             <constraint firstItem="Sib-kk-b0p" firstAttribute="trailing" secondItem="gzB-tx-gHm" secondAttribute="trailing" id="QPs-zW-DY5"/>
