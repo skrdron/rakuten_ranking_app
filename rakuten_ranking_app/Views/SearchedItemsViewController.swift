@@ -7,17 +7,38 @@
 
 import UIKit
 
-class SearchedItemsViewController: UIViewController, UISearchBarDelegate {
+class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITableViewDelegate  {
     
     // 検索文字列を保持するプロパティ
     var searchString: String?
-    var searchModel: SearchModel?
     
-
+    var model: SearchModel?{
+        didSet {
+            registerModel()
+        }
+    }
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    deinit {
+        model?.notificationCenter.removeObserver(self)
+    }
+    
+    private func registerModel() {
+        model?.notificationCenter.addObserver(forName: .init(rawValue: NotificationConst.searchNotificationName),
+                                                object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // APIClientの実装に基づいて初期化
-        self.searchModel = SearchModel(apiClient: DefaultAPIClient.shared)
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        
+        model = SearchModel(apiClient: DefaultAPIClient.shared)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +46,7 @@ class SearchedItemsViewController: UIViewController, UISearchBarDelegate {
         setupSearchBarDelegate()
     }
     
-    ///親VC(SearchViewController)の取得
+    /// 親VC(SearchViewController)の取得
     private func setupSearchBarDelegate() {
         // 親のViewControllerから検索バーを参照し、delegateとして自分を設定
         if let parentVC = self.parent as? SearchViewController {
@@ -33,12 +54,30 @@ class SearchedItemsViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    ///SearchBarに入力された文字を取得しモデルに渡す処理
+    /// SearchBarに入力された文字を取得しモデルに渡す処理
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {
             return
         }
-        print("検索バーに入力された文字: \(searchText)")
-        searchModel?.fetchSearchResults(with: searchText)
+        model?.fetchSearchResults(with: searchText)
     }
 }
+
+extension SearchedItemsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model?.search?.items.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
+        guard let item = model?.search?.items[indexPath.row] else {
+            fatalError("データを取得できませんでした。")
+        }
+        
+        cell.configure(with: item.item, at: indexPath, in: tableView)
+        
+        return cell
+    }
+}
+
+

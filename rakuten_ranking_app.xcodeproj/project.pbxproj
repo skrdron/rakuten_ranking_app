@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D275D8F2C057D330012750B /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D275D8E2C057D330012750B /* SearchAPI.swift */; };
 		6D5245562BFF3E4F0045289D /* more_2_line.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5245552BFF3E4F0045289D /* more_2_line.svg */; };
 		6D5245642C0073A90045289D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5245632C0073A90045289D /* Search.swift */; };
 		6D5245662C007A2B0045289D /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5245652C007A2B0045289D /* SearchModel.swift */; };
@@ -40,6 +39,8 @@
 		6DAFB3ED2BF753E30092F9BC /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3EC2BF753E30092F9BC /* RankingTableViewCell.swift */; };
 		6DAFB3F12BFC69D30092F9BC /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */; };
 		6DAFB3F32BFC69E20092F9BC /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */; };
+		6DC1933B2C05738F00FFD1AD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC1933A2C05738F00FFD1AD /* SearchTableViewCell.swift */; };
+		6DF22AA62C07281E001B0654 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF22AA52C07281E001B0654 /* SearchAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6D275D8E2C057D330012750B /* SearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		6D5245552BFF3E4F0045289D /* more_2_line.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = more_2_line.svg; sourceTree = "<group>"; };
 		6D5245632C0073A90045289D /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		6D5245652C007A2B0045289D /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
@@ -93,6 +93,8 @@
 		6DAFB3EC2BF753E30092F9BC /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		6DAFB3F02BFC69D30092F9BC /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
 		6DAFB3F22BFC69E20092F9BC /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		6DC1933A2C05738F00FFD1AD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		6DF22AA52C07281E001B0654 /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				6D6782162BEC6A0900423201 /* RankingForFemaleViewController.swift */,
 				6DAFB3EC2BF753E30092F9BC /* RankingTableViewCell.swift */,
 				6D5245672C00854E0045289D /* SearchedItemsViewController.swift */,
+				6DC1933A2C05738F00FFD1AD /* SearchTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,9 +228,9 @@
 		6D6782542BF2100C00423201 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				6D275D8E2C057D330012750B /* SearchAPI.swift */,
 				6D6782552BF2107000423201 /* APIClient.swift */,
 				6D67825C2BF2111100423201 /* RankingAPI.swift */,
+				6DF22AA52C07281E001B0654 /* SearchAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -401,7 +404,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D275D8F2C057D330012750B /* SearchAPI.swift in Sources */,
 				6D67820D2BEB291700423201 /* BookmarkViewController.swift in Sources */,
 				6D5245682C00854E0045289D /* SearchedItemsViewController.swift in Sources */,
 				6D67820B2BEB290900423201 /* SearchViewController.swift in Sources */,
@@ -409,6 +411,7 @@
 				6D5245662C007A2B0045289D /* SearchModel.swift in Sources */,
 				6DAFB3F32BFC69E20092F9BC /* ImageFetcher.swift in Sources */,
 				6D6782092BEB28FC00423201 /* RankingViewController.swift in Sources */,
+				6DC1933B2C05738F00FFD1AD /* SearchTableViewCell.swift in Sources */,
 				6D67820F2BEB2C3D00423201 /* TabBarController.swift in Sources */,
 				6D6782602BF2117400423201 /* RankingModel.swift in Sources */,
 				6D6781BA2BEA268000423201 /* AppDelegate.swift in Sources */,
@@ -416,6 +419,7 @@
 				6DAFB3F12BFC69D30092F9BC /* PriceFormatter.swift in Sources */,
 				6D6782672BF4A6CF00423201 /* Constants.swift in Sources */,
 				6D6782132BEC69DB00423201 /* RankingForAllViewController.swift in Sources */,
+				6DF22AA62C07281E001B0654 /* SearchAPI.swift in Sources */,
 				6D5245642C0073A90045289D /* Search.swift in Sources */,
 				6D6781BC2BEA268000423201 /* SceneDelegate.swift in Sources */,
 				6D6782172BEC6A0900423201 /* RankingForFemaleViewController.swift in Sources */,

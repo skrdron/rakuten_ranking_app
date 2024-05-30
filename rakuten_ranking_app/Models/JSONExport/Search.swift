@@ -10,12 +10,12 @@ import Foundation
 struct Search: Codable {
     let genreInformation: [GenreInformation]
     let items: [SearchItemElement]
-
+    
     enum CodingKeys: String, CodingKey {
         case genreInformation = "GenreInformation"
         case items = "Items"
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         genreInformation = try container.decode([GenreInformation].self, forKey: .genreInformation)
@@ -25,7 +25,7 @@ struct Search: Codable {
 
 struct SearchItemElement: Codable {
     let item: SearchItem
-
+    
     enum CodingKeys: String, CodingKey {
         case item = "Item"
     }
