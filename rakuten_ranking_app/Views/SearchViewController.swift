@@ -18,7 +18,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
         super.viewDidLoad()
         setupSearchBar()
         addEllipsisButton()
-        hideKeyboardWhenTappedAround()
     }
     
     /// searchBarをNavigationBarに設置する関数
@@ -52,15 +51,9 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
         print("elliipsがタップされました")
     }
     
-    /// 画面上の任意の場所をタップしたときにキーボードを閉じるためのタップジェスチャーを設定
-    func hideKeyboardWhenTappedAround() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    /// タップイベントを検知し、キーボードを閉じる処理
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     /// 検索ボタンが押されたときにキーボードを閉じる

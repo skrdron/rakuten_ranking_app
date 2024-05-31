@@ -21,6 +21,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
     // 親の検索バーを取得
     var parentSearchBar: UISearchBar?
     
+    @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     deinit {
@@ -31,6 +32,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         model?.notificationCenter.addObserver(forName: .init(rawValue: NotificationConst.searchNotificationName),
                                               object: nil, queue: OperationQueue.main) { [weak self] _ in
             self?.tableView.reloadData()
+            self?.updateEmptyLabelVisibility()
         }
     }
     
@@ -43,6 +45,9 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         tableView.keyboardDismissMode = .onDrag
         
         model = SearchModel(apiClient: DefaultAPIClient.shared)
+        
+        emptyLabel.text = "商品がありません"
+        emptyLabel.tintColor = UIColor.gray
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +64,10 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     /// SearchBarに入力された文字を取得しモデルに渡す処理
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {
@@ -67,11 +76,17 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         model?.fetchSearchResults(with: searchText)
         searchBar.resignFirstResponder()
     }
+    
+    private func updateEmptyLabelVisibility() {
+        let itemCount = model?.search?.items.count ?? 0
+        emptyLabel.isHidden = itemCount > 0
+    }
 }
 
 extension SearchedItemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.search?.items.count ?? 0
+        let count = model?.search?.items.count ?? 0
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
