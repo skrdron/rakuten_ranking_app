@@ -9,7 +9,7 @@ import UIKit
 import SVGKit
 
 
-class SearchViewController: UIViewController,UISearchBarDelegate  {
+class SearchViewController: UIViewController  {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ellipsis: UIImageView!
