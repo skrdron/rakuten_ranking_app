@@ -51,11 +51,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
         print("elliipsがタップされました")
     }
     
-    /// タップイベントを検知し、キーボードを閉じる処理
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     /// 検索ボタンが押されたときにキーボードを閉じる
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()

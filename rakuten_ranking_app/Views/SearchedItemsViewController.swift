@@ -61,7 +61,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
     
     /// タップイベントを検知し、キーボードを閉じる処理
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-         self.view.endEditing(true)
+        self.parentSearchBar?.endEditing(true)
     }
     
     /// SearchBarに入力された文字を取得しモデルに渡す処理
