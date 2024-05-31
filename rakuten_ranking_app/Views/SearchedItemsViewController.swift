@@ -77,6 +77,16 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         searchBar.resignFirstResponder()
     }
     
+    /// searchText が空文字列であるかどうかをチェック 検索結果をクリアし結果を反映
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+         if searchText.isEmpty {
+             model?.clearSearchResults()
+             tableView.reloadData()
+             updateEmptyLabelVisibility()
+         }
+     }
+    
+    /// 検索結果が空かどうかに基づいてラベルの表示を更新
     private func updateEmptyLabelVisibility() {
         let itemCount = model?.search?.items.count ?? 0
         emptyLabel.isHidden = itemCount > 0

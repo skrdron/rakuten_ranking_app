@@ -44,4 +44,9 @@ class SearchModel {
             }
         }
     }
+    
+    /// search プロパティを nil に設定し検索結果をクリアするための処理
+    func clearSearchResults() {
+        search = nil
+    }
 }
