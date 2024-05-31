@@ -9,7 +9,7 @@ import UIKit
 import SVGKit
 
 
-class SearchViewController: UIViewController,UISearchBarDelegate  {
+class SearchViewController: UIViewController  {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ellipsis: UIImageView!
@@ -24,7 +24,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate  {
     func setupSearchBar() {
         if let navigationBarFrame = navigationController?.navigationBar.bounds {
             let searchBar = UISearchBar(frame: navigationBarFrame)
-            searchBar.delegate = self
             searchBar.placeholder = "商品を検索"
             searchBar.tintColor = UIColor.gray
             searchBar.keyboardType = .default

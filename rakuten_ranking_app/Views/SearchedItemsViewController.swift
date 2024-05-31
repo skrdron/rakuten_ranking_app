@@ -18,6 +18,9 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         }
     }
     
+    // 親の検索バーを取得
+    var parentSearchBar: UISearchBar?
+    
     @IBOutlet weak var tableView: UITableView!
     
     deinit {
@@ -26,7 +29,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
     
     private func registerModel() {
         model?.notificationCenter.addObserver(forName: .init(rawValue: NotificationConst.searchNotificationName),
-                                                object: nil, queue: OperationQueue.main) { [weak self] _ in
+                                              object: nil, queue: OperationQueue.main) { [weak self] _ in
             self?.tableView.reloadData()
         }
     }
@@ -37,6 +40,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+        tableView.keyboardDismissMode = .onDrag
         
         model = SearchModel(apiClient: DefaultAPIClient.shared)
     }
@@ -51,7 +55,13 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
         // 親のViewControllerから検索バーを参照し、delegateとして自分を設定
         if let parentVC = self.parent as? SearchViewController {
             parentVC.searchBar.delegate = self
+            parentSearchBar = parentVC.searchBar
         }
+    }
+    
+    /// タップイベントを検知し、キーボードを閉じる処理
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.parentSearchBar?.endEditing(true)
     }
     
     /// SearchBarに入力された文字を取得しモデルに渡す処理
@@ -60,6 +70,7 @@ class SearchedItemsViewController:UIViewController, UISearchBarDelegate, UITable
             return
         }
         model?.fetchSearchResults(with: searchText)
+        searchBar.resignFirstResponder()
     }
 }
 
@@ -79,5 +90,3 @@ extension SearchedItemsViewController: UITableViewDataSource {
         return cell
     }
 }
-
-
